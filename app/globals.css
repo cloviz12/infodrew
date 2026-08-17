@@ -1,0 +1,62 @@
+@import "tailwindcss";
+
+:root {
+  --background: #faf7f1;
+  --surface: #ffffff;
+  --foreground: #1b1b18;
+  --muted: #6b6459;
+  --border: #e7e0d4;
+
+  --colombia: #1a3f8f;
+  --colombia-dark: #0f2a63;
+  --colombia-gold: #f5c518;
+  --colombia-red: #c8102e;
+
+  --cauca: #1f7a4d;
+  --cauca-dark: #145035;
+  --cauca-earth: #8a5a34;
+  --cauca-light: #e7f3ec;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-surface: var(--surface);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-border: var(--border);
+
+  --color-colombia: var(--colombia);
+  --color-colombia-dark: var(--colombia-dark);
+  --color-colombia-gold: var(--colombia-gold);
+  --color-colombia-red: var(--colombia-red);
+
+  --color-cauca: var(--cauca);
+  --color-cauca-dark: var(--cauca-dark);
+  --color-cauca-earth: var(--cauca-earth);
+  --color-cauca-light: var(--cauca-light);
+
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+}
+
+.prose-content p {
+  margin-bottom: 1rem;
+  line-height: 1.75;
+}
+
+.tag-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  border-radius: 9999px;
+  padding: 0.2rem 0.7rem;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
