@@ -14,6 +14,7 @@ const eslintConfig = defineConfig([
     "next-env.d.ts",
     "prisma/seed.js",
     "scripts/prepare-db.js",
+    "scripts/sync-flickr-art.js",
   ]),
 ]);
 

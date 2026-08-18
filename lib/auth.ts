@@ -1,7 +1,7 @@
 import { createHmac, timingSafeEqual } from "node:crypto";
 import { resolveAppDatabaseUrl } from "@/lib/database-url";
 
-export const ADMIN_COOKIE = "infodrew_admin_session";
+export const ADMIN_COOKIE = "colombia_incluyente_admin_session";
 const SESSION_TTL_MS = 1000 * 60 * 60 * 24 * 7; // 7 días
 
 // Si no se define SESSION_SECRET explícitamente, se deriva de la URL de la
@@ -15,7 +15,7 @@ function getSecret() {
   if (!databaseUrl) {
     throw new Error("Falta la variable de entorno DATABASE_URL o SESSION_SECRET");
   }
-  return createHmac("sha256", databaseUrl).update("infodrew-session-secret").digest("hex");
+  return createHmac("sha256", databaseUrl).update("colombia-incluyente-session-secret").digest("hex");
 }
 
 function sign(value: string) {

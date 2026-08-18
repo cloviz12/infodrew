@@ -1,0 +1,49 @@
+name: Sincronizar banco de imágenes (Flickr)
+
+on:
+  workflow_dispatch: {}
+  schedule:
+    # Lunes 06:00 UTC — recoge fotos nuevas que se agreguen al álbum.
+    - cron: "0 6 * * 1"
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Descargar catálogo de fotos desde Flickr
+        env:
+          FLICKR_API_KEY: ${{ secrets.FLICKR_API_KEY }}
+        run: node scripts/sync-flickr-art.js
+
+      - name: Abrir PR si hay fotos nuevas
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -e
+          if git diff --quiet -- data/flickr-art.json; then
+            echo "Sin cambios en el banco de imágenes."
+            exit 0
+          fi
+
+          branch="sync/flickr-art-$(date +%Y%m%d%H%M%S)"
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git checkout -b "$branch"
+          git add data/flickr-art.json
+          git commit -m "Sincroniza el banco de imágenes desde Flickr"
+          git push origin "$branch"
+
+          gh pr create \
+            --title "Sincroniza el banco de imágenes desde Flickr" \
+            --body "Actualización automática de \`data/flickr-art.json\` con las fotos públicas de https://www.flickr.com/photos/75474645@N02/albums/." \
+            --base main \
+            --head "$branch"

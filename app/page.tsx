@@ -1,8 +1,10 @@
 import Link from "next/link";
 import PostCard from "@/components/PostCard";
 import SeguirWidget from "@/components/SeguirWidget";
+import ArtCover from "@/components/ArtCover";
 import { getPublishedPosts, getSiteStats } from "@/lib/data";
 import { formatNumber } from "@/lib/format";
+import { ART } from "@/lib/art";
 
 export const dynamic = "force-dynamic";
 
@@ -19,82 +21,79 @@ export default async function HomePage({
   ]);
 
   return (
-    <main className="mx-auto flex max-w-6xl flex-col gap-16 px-4 py-10">
-      <section className="grid gap-8 rounded-3xl border border-border bg-surface p-8 sm:p-12 lg:grid-cols-[1.3fr_1fr]">
-        <div className="flex flex-col justify-center gap-5">
-          <span className="tag-pill w-fit bg-cauca-light text-cauca-dark">
-            Plataforma comunitaria
-          </span>
-          <h1 className="text-3xl font-black leading-tight text-foreground sm:text-4xl">
-            Conectamos líderes, organizaciones y territorios de{" "}
-            <span className="text-colombia">Colombia</span> y el{" "}
-            <span className="text-cauca">Cauca</span>
-          </h1>
-          <p className="text-base leading-relaxed text-muted">
-            Noticias, fotos y videos sobre lo que ocurre en el país y en el
-            territorio caucano: organizaciones sociales, comunidades
-            campesinas, mujeres y comunidades afro. Comenta, comparte y
-            participa.
-          </p>
-          <div className="flex flex-wrap gap-3">
-            <Link
-              href="/enviar"
-              className="rounded-full bg-colombia px-5 py-3 text-sm font-bold text-white transition hover:bg-colombia-dark"
-            >
-              Envía tu noticia
-            </Link>
-            <Link
-              href="/cauca"
-              className="rounded-full border border-border px-5 py-3 text-sm font-bold text-foreground transition hover:border-cauca hover:text-cauca"
-            >
-              Ver Cauca
-            </Link>
+    <>
+      <ArtCover slot={ART.home} tone="ink" className="flex min-h-[80vh] items-end sm:min-h-[88vh]">
+        <div className="w-full px-4 pb-14 pt-28 sm:px-6 sm:pb-20">
+          <div className="mx-auto max-w-6xl">
+            <span className="eyebrow text-white/65">Plataforma comunitaria</span>
+            <h1 className="mt-5 max-w-3xl font-display text-[2.6rem] font-medium leading-[1.05] text-white sm:text-6xl lg:text-7xl">
+              Conectamos líderes, organizaciones y territorios de{" "}
+              <span className="italic" style={{ color: "var(--colombia-gold)" }}>
+                Colombia
+              </span>{" "}
+              y el{" "}
+              <span className="italic" style={{ color: "var(--cauca-light)" }}>
+                Cauca
+              </span>
+            </h1>
+            <p className="mt-6 max-w-xl text-base leading-relaxed text-white/70 sm:text-lg">
+              Noticias, fotos y videos sobre lo que ocurre en el país y en el
+              territorio caucano: organizaciones sociales, comunidades
+              campesinas, mujeres y comunidades afro. Comenta, comparte y
+              participa.
+            </p>
+            <div className="mt-9 flex flex-wrap gap-4">
+              <Link
+                href="/enviar"
+                className="rounded-full bg-white px-6 py-3 text-sm font-bold text-foreground transition hover:bg-white/90"
+              >
+                Envía tu noticia
+              </Link>
+              <Link
+                href="/cauca"
+                className="rounded-full border border-white/30 px-6 py-3 text-sm font-bold text-white transition hover:border-white"
+              >
+                Ver Cauca
+              </Link>
+            </div>
+
+            <div className="mt-14 flex flex-wrap gap-x-10 gap-y-4 border-t border-white/15 pt-6">
+              <Stat label="Noticias Colombia" value={stats.colombia} />
+              <Stat label="Noticias Cauca" value={stats.cauca} />
+              <Stat label="Seguidores" value={stats.followers} />
+            </div>
           </div>
         </div>
+      </ArtCover>
 
-        <div className="grid grid-cols-3 gap-3 self-center">
-          <StatCard label="Noticias Colombia" value={stats.colombia} accent="colombia" />
-          <StatCard label="Noticias Cauca" value={stats.cauca} accent="cauca" />
-          <StatCard label="Seguidores" value={stats.followers} accent="colombia-gold" />
-        </div>
-      </section>
+      <main className="mx-auto flex max-w-6xl flex-col gap-20 px-4 py-16 sm:px-6 sm:py-20">
+        <SeguirWidget followerCount={stats.followers} feedback={follow as "success" | "error" | undefined} />
 
-      <SeguirWidget followerCount={stats.followers} feedback={follow as "success" | "error" | undefined} />
+        <SectionPreview
+          title="Colombia"
+          description="Los temas y acontecimientos más relevantes del país."
+          href="/colombia"
+          accent="text-colombia"
+          posts={colombiaPosts}
+        />
 
-      <SectionPreview
-        title="Colombia"
-        description="Los temas y acontecimientos más relevantes del país."
-        href="/colombia"
-        accent="text-colombia"
-        posts={colombiaPosts}
-      />
-
-      <SectionPreview
-        title="Cauca"
-        description="Organizaciones sociales, comunidades campesinas, mujeres y comunidades afro del territorio."
-        href="/cauca"
-        accent="text-cauca"
-        posts={caucaPosts}
-      />
-    </main>
+        <SectionPreview
+          title="Cauca"
+          description="Organizaciones sociales, comunidades campesinas, mujeres y comunidades afro del territorio."
+          href="/cauca"
+          accent="text-cauca"
+          posts={caucaPosts}
+        />
+      </main>
+    </>
   );
 }
 
-function StatCard({
-  label,
-  value,
-  accent,
-}: {
-  label: string;
-  value: number;
-  accent: "colombia" | "cauca" | "colombia-gold";
-}) {
+function Stat({ label, value }: { label: string; value: number }) {
   return (
-    <div className="flex flex-col items-center justify-center rounded-2xl border border-border bg-background p-4 text-center">
-      <span className="text-2xl font-black" style={{ color: `var(--${accent})` }}>
-        {formatNumber(value)}
-      </span>
-      <span className="mt-1 text-xs font-medium text-muted">{label}</span>
+    <div className="flex flex-col">
+      <span className="font-display text-3xl font-medium text-white">{formatNumber(value)}</span>
+      <span className="mt-1 text-[11px] font-medium uppercase tracking-[0.14em] text-white/55">{label}</span>
     </div>
   );
 }
@@ -114,10 +113,10 @@ function SectionPreview({
 }) {
   return (
     <section>
-      <div className="flex items-end justify-between">
+      <div className="flex flex-wrap items-end justify-between gap-4 border-b border-border pb-5">
         <div>
-          <h2 className={`text-2xl font-black ${accent}`}>{title}</h2>
-          <p className="mt-1 text-sm text-muted">{description}</p>
+          <h2 className={`font-display text-3xl font-medium ${accent}`}>{title}</h2>
+          <p className="mt-1.5 text-sm text-muted">{description}</p>
         </div>
         <Link href={href} className={`text-sm font-semibold ${accent} hover:underline`}>
           Ver todo →
@@ -125,12 +124,12 @@ function SectionPreview({
       </div>
 
       {posts.length === 0 ? (
-        <p className="mt-6 rounded-xl border border-dashed border-border p-6 text-sm text-muted">
+        <p className="mt-8 text-sm italic text-muted">
           Aún no hay noticias publicadas en esta sección. ¡Sé la primera
           organización en enviar contenido!
         </p>
       ) : (
-        <div className="mt-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-8 grid gap-x-8 gap-y-10 sm:grid-cols-2 lg:grid-cols-3">
           {posts.map((post) => (
             <PostCard key={post.id} post={post} />
           ))}

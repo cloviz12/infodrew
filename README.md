@@ -1,4 +1,4 @@
-# InfoDrew
+# Colombia Incluyente
 
 Plataforma web informativa e interactiva que conecta a líderes nacionales,
 regionales y a los diferentes sectores del territorio. Tiene dos secciones

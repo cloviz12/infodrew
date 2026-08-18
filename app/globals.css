@@ -1,21 +1,29 @@
 @import "tailwindcss";
 
 :root {
-  --background: #faf7f1;
-  --surface: #ffffff;
-  --foreground: #1b1b18;
-  --muted: #6b6459;
-  --border: #e7e0d4;
+  /* Papel editorial, no "banner de gobierno": tinta cálida sobre papel
+     crema, con un único acento (terracota) que hace de firma visual del
+     sitio. Colombia/Cauca quedan como identificadores de sección
+     (etiquetas pequeñas), no como el color dominante de la interfaz. */
+  --background: #f4eee0;
+  --surface: #fffcf4;
+  --foreground: #1c1710;
+  --muted: #6f6754;
+  --border: #e3d7bb;
 
-  --colombia: #1a3f8f;
-  --colombia-dark: #0f2a63;
-  --colombia-gold: #f5c518;
-  --colombia-red: #c8102e;
+  --accent: #c1502e;
+  --accent-dark: #8a381d;
+  --accent-light: #f1ded2;
 
-  --cauca: #1f7a4d;
-  --cauca-dark: #145035;
+  --colombia: #33436e;
+  --colombia-dark: #1c2740;
+  --colombia-gold: #c9a24b;
+  --colombia-red: #a8412c;
+
+  --cauca: #3f5b42;
+  --cauca-dark: #223022;
   --cauca-earth: #8a5a34;
-  --cauca-light: #e7f3ec;
+  --cauca-light: #e9e2c9;
 }
 
 @theme inline {
@@ -24,6 +32,10 @@
   --color-foreground: var(--foreground);
   --color-muted: var(--muted);
   --color-border: var(--border);
+
+  --color-accent: var(--accent);
+  --color-accent-dark: var(--accent-dark);
+  --color-accent-light: var(--accent-light);
 
   --color-colombia: var(--colombia);
   --color-colombia-dark: var(--colombia-dark);
@@ -37,6 +49,7 @@
 
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --font-display: var(--font-fraunces);
 }
 
 body {
@@ -45,8 +58,9 @@ body {
 }
 
 .prose-content p {
-  margin-bottom: 1rem;
-  line-height: 1.75;
+  margin-bottom: 1.1rem;
+  line-height: 1.8;
+  font-size: 1.02rem;
 }
 
 .tag-pill {
@@ -59,4 +73,72 @@ body {
   font-weight: 600;
   letter-spacing: 0.02em;
   text-transform: uppercase;
+}
+
+/* --- Sistema editorial --------------------------------------------- */
+
+.font-display {
+  font-family: var(--font-display), Georgia, serif;
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.eyebrow::before {
+  content: "";
+  display: inline-block;
+  width: 1.25rem;
+  height: 1.5px;
+  background: currentColor;
+  opacity: 0.6;
+}
+
+.hairline {
+  border-color: var(--border);
+}
+
+/* Textura de grano de papel, sutil, para paneles de arte y fondos
+   oscuros: rompe el aspecto plano/corporativo. Capa independiente para
+   no pasar por encima del texto y afectar la legibilidad. */
+.grain-layer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.3;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix type='saturate' values='0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+  background-size: 180px 180px;
+}
+
+/* Panel de arte tipo "pantalla de carga" (WeTransfer): imagen o pintura
+   generada a pantalla completa + grano + velo de color. Si no hay
+   imagen (ver lib/art.ts), el degradado hace de obra abstracta. */
+.art-cover {
+  position: relative;
+  overflow: hidden;
+}
+
+.art-cover img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.art-cover .art-veil {
+  position: absolute;
+  inset: 0;
+}
+
+.art-cover .art-content {
+  position: relative;
+  z-index: 2;
 }
