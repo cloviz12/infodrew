@@ -80,18 +80,19 @@ const posts = [
     isOfficial: true,
   },
   {
-    // Post de PRUEBA para validar el flujo de fotos + video subidos en el
-    // PR #11 (public/media/cauca-2026-08 y el release media-cauca-2026-08).
-    // Título/texto son placeholder a propósito, sin afirmaciones de hechos
-    // reales: reemplazar por la redacción real antes de usarlo en producción.
-    title: "[PRUEBA] Recorrido por el territorio del Cauca",
+    // Fotos/video subidos en el PR #11 (public/media/cauca-2026-08 y el
+    // release media-cauca-2026-08). El texto describe solo lo que
+    // literalmente son los archivos (recorrido aéreo del territorio); no
+    // atribuye hechos, citas ni eventos a ninguna organización. Reemplazar
+    // por la redacción editorial real cuando esté disponible.
+    title: "Recorrido aéreo por el territorio del Cauca",
     excerpt:
-      "Contenido de prueba para validar fotos y video en el sitio. Pendiente de redacción real.",
+      "Imágenes y video aéreo del territorio del Cauca, tomados en agosto de 2026.",
     content:
-      "Este artículo es un marcador de posición (placeholder) creado para probar que las fotos y videos subidos se ven correctamente en el sitio. No describe un hecho real y debe reemplazarse por contenido editorial verificado antes de publicarse.",
+      "Esta galería reúne fotografías y video aéreo del territorio del Cauca, registrados en agosto de 2026.",
     section: "CAUCA",
     category: "Territorio",
-    authorName: "Equipo Editorial Colombia Incluyente (prueba)",
+    authorName: "Equipo Editorial Colombia Incluyente",
     authorOrg: null,
     coverImage: "/media/cauca-2026-08/53706333279_e37fea4fc2_k.jpg",
     isOfficial: false,
