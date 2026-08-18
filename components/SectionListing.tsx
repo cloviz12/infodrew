@@ -34,12 +34,12 @@ export default async function SectionListing({ section }: { section: Section }) 
 
   return (
     <>
-      <ArtCover slot={copy.slot} tone={copy.tone} className="h-[30vh] sm:h-[38vh]" />
-      <Weave id={`${copy.tone}-weave`} fg={color} bg="#15130f" height={10} />
+      <ArtCover slot={copy.slot} tone={copy.tone} className="h-[22vh] sm:h-[26vh]" />
+      <Weave id={`${copy.tone}-weave`} fg={color} bg="#201d19" height={6} />
 
-      <div className="bg-foreground px-4 py-10 text-background sm:px-6 sm:py-14">
+      <div className="bg-foreground px-4 py-10 text-background sm:px-6 sm:py-12">
         <div className="mx-auto max-w-6xl">
-          <h1 className="font-display text-5xl font-black uppercase tracking-tight sm:text-7xl" style={{ color }}>
+          <h1 className="font-display text-4xl font-black uppercase tracking-tight sm:text-5xl" style={{ color }}>
             {copy.title}
           </h1>
           <p className="mt-3 max-w-xl text-sm leading-relaxed text-background/65 sm:text-base">

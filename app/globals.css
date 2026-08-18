@@ -1,31 +1,32 @@
 @import "tailwindcss";
 
 :root {
-  /* Constructivismo ruso (rojo/negro/crudo, diagonales, tipografía
-     pesada en mayúsculas) cruzado con la geometría de los tejidos
-     andinos (rombos, zigzag) — ver components/Weave.tsx. Un solo rojo
-     como firma del sitio, negro/crudo de fondo, dorado como acento
-     raro. Colombia = rojo, Cauca = índigo (color de tinte textil),
-     como identificadores de sección, no como "banderas". */
-  --background: #f0e9d8;
-  --surface: #fff9ec;
-  --foreground: #15130f;
-  --muted: #5c5648;
-  --border: #ded0ab;
+  /* Mismo lenguaje gráfico (bloques planos, tipografía pesada,
+     zigzag textil — ver components/Weave.tsx) pero con una paleta
+     sobria de prensa tradicional en vez del rojo de cartel: carbón
+     cálido de fondo, vino tinto apagado como firma, azul marino y
+     oliva como identificadores de sección. Nada de rojo saturado ni
+     dorado brillante — eso es lo que hacía sentir el sitio como
+     landing page urgente en vez de medio editorial. */
+  --background: #ece5d5;
+  --surface: #f7f2e6;
+  --foreground: #201d19;
+  --muted: #6b6355;
+  --border: #d9cdb0;
 
-  --accent: #c81f2c;
-  --accent-dark: #8c1420;
-  --accent-light: #f3d9d2;
+  --accent: #6d2a35;
+  --accent-dark: #4a1c24;
+  --accent-light: #e4d7d5;
 
-  --colombia: #c81f2c;
-  --colombia-dark: #8c1420;
-  --colombia-gold: #d6a324;
-  --colombia-red: #8c1420;
+  --colombia: #263a4f;
+  --colombia-dark: #16222f;
+  --colombia-gold: #a9863f;
+  --colombia-red: #6d2a35;
 
-  --cauca: #24304c;
-  --cauca-dark: #141b2c;
-  --cauca-earth: #8a5a34;
-  --cauca-light: #e4dcc4;
+  --cauca: #3c4a34;
+  --cauca-dark: #232c1e;
+  --cauca-earth: #7a5738;
+  --cauca-light: #e1dcc8;
 }
 
 @theme inline {
@@ -76,7 +77,7 @@ body {
   text-transform: uppercase;
 }
 
-/* --- Sistema visual: constructivismo + geometría textil ------------ */
+/* --- Sistema visual: prensa tradicional + geometría textil --------- */
 
 .font-display {
   font-family: var(--font-display), "Arial Black", sans-serif;
@@ -150,13 +151,14 @@ body {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  filter: grayscale(1) contrast(1.2) brightness(0.95);
+  filter: grayscale(1) contrast(1.05) brightness(0.92);
 }
 
 .art-cover .art-tint {
   position: absolute;
   inset: 0;
   mix-blend-mode: multiply;
+  opacity: 0.75;
 }
 
 .art-cover .art-content {

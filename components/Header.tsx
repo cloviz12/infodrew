@@ -53,7 +53,7 @@ export default function Header() {
         ))}
       </nav>
 
-      <Weave id="header-weave" fg="#c81f2c" height={8} />
+      <Weave id="header-weave" fg="#4a1c24" height={6} />
     </header>
   );
 }

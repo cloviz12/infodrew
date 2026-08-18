@@ -4,7 +4,7 @@ import Weave from "@/components/Weave";
 export default function Footer() {
   return (
     <footer className="mt-20 bg-foreground text-background">
-      <Weave id="footer-weave" fg="#c81f2c" height={8} />
+      <Weave id="footer-weave" fg="#4a1c24" height={6} />
 
       <div className="mx-auto grid max-w-6xl gap-10 px-4 py-14 sm:px-6 sm:grid-cols-3">
         <div>

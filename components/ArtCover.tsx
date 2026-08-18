@@ -1,21 +1,21 @@
 import type { ArtSlot } from "@/lib/art";
 
-// Placeholder: composición diagonal de bloques planos (sin foto) en la
-// misma paleta que usaría el duotono real — cartel constructivista, no
-// degradado difuso de stock.
+// Placeholder: campo de un solo tono con una línea fina en el
+// empalme diagonal, no una franja de color gritona — el mismo
+// recurso gráfico (duotono, diagonal) pero en volumen bajo.
 const PLACEHOLDER = {
-  ink: "linear-gradient(115deg, #15130f 0%, #15130f 56%, #c81f2c 56%, #c81f2c 61%, #15130f 61%, #15130f 100%)",
-  colombia: "linear-gradient(115deg, #8c1420 0%, #8c1420 54%, #15130f 54%, #15130f 60%, #c81f2c 60%, #c81f2c 100%)",
-  cauca: "linear-gradient(115deg, #141b2c 0%, #141b2c 54%, #d6a324 54%, #d6a324 60%, #24304c 60%, #24304c 100%)",
+  ink: "linear-gradient(115deg, #201d19 0%, #201d19 49.4%, #6d2a35 49.4%, #6d2a35 50.2%, #201d19 50.2%, #201d19 100%)",
+  colombia: "linear-gradient(115deg, #16222f 0%, #16222f 49.4%, #6d2a35 49.4%, #6d2a35 50.2%, #263a4f 50.2%, #263a4f 100%)",
+  cauca: "linear-gradient(115deg, #232c1e 0%, #232c1e 49.4%, #a9863f 49.4%, #a9863f 50.2%, #3c4a34 50.2%, #3c4a34 100%)",
 } as const;
 
 // Tinta del duotono: blanco y negro (filtro CSS en .art-cover img) +
 // esta única tinta plana en multiply, tal como se imprimía un cartel
-// de propaganda a dos colores.
+// a dos colores — pero en un tono contenido, no de alarma.
 const TINT = {
-  ink: "#15130f",
-  colombia: "#c81f2c",
-  cauca: "#24304c",
+  ink: "#201d19",
+  colombia: "#263a4f",
+  cauca: "#3c4a34",
 } as const;
 
 export default function ArtCover({

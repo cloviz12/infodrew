@@ -62,12 +62,3 @@ export function getModeratedPosts() {
 export async function getFollowerCount() {
   return safe(0, () => prisma.follower.count());
 }
-
-export async function getSiteStats() {
-  const [colombia, cauca, followers] = await Promise.all([
-    safe(0, () => prisma.post.count({ where: { status: "PUBLISHED", section: "COLOMBIA" } })),
-    safe(0, () => prisma.post.count({ where: { status: "PUBLISHED", section: "CAUCA" } })),
-    getFollowerCount(),
-  ]);
-  return { colombia, cauca, followers };
-}

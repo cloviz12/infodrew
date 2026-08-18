@@ -11,17 +11,25 @@ export default function SeguirWidget({
   return (
     <section
       id="seguir"
-      className="scroll-mt-24 border-t-4 border-accent bg-foreground px-6 py-10 text-background sm:px-12 sm:py-12"
+      className="scroll-mt-24 border-t-2 border-accent bg-foreground px-6 py-10 text-background sm:px-12 sm:py-12"
     >
       <div className="flex flex-col gap-8 sm:flex-row sm:items-center sm:justify-between">
         <div>
           <p className="eyebrow text-accent">Síguenos</p>
-          <p className="mt-3 font-display text-5xl font-black text-background">
-            {formatNumber(followerCount)}
-          </p>
-          <p className="text-sm font-bold uppercase tracking-wide text-background/70">
-            {followerCount === 1 ? "persona sigue" : "personas siguen"} el proyecto
-          </p>
+          {followerCount > 0 ? (
+            <>
+              <p className="mt-3 font-display text-4xl font-black text-background">
+                {formatNumber(followerCount)}
+              </p>
+              <p className="text-sm font-bold uppercase tracking-wide text-background/70">
+                {followerCount === 1 ? "persona sigue" : "personas siguen"} el proyecto
+              </p>
+            </>
+          ) : (
+            <p className="mt-3 max-w-sm font-display text-xl font-black leading-snug text-background">
+              Sé de las primeras personas en seguir el proyecto
+            </p>
+          )}
           <p className="mt-3 max-w-md text-sm leading-relaxed text-background/60">
             Únete a la comunidad y recibe las noticias más relevantes de
             Colombia y el Cauca.
