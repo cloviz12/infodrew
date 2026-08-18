@@ -1,5 +1,6 @@
 import type { Section } from "@prisma/client";
-import PostCard from "@/components/PostCard";
+import PostFeature from "@/components/PostFeature";
+import PostRow from "@/components/PostRow";
 import ArtCover from "@/components/ArtCover";
 import Weave from "@/components/Weave";
 import { getPublishedPosts } from "@/lib/data";
@@ -52,11 +53,16 @@ export default async function SectionListing({ section }: { section: Section }) 
         {posts.length === 0 ? (
           <p className="text-sm font-semibold italic text-muted">{copy.empty}</p>
         ) : (
-          <div className="grid gap-x-8 gap-y-10 sm:grid-cols-2 lg:grid-cols-3">
-            {posts.map((post, i) => (
-              <PostCard key={post.id} post={post} index={i} />
-            ))}
-          </div>
+          <>
+            <PostFeature post={posts[0]} />
+            {posts.length > 1 && (
+              <div className="mt-2">
+                {posts.slice(1).map((post, i) => (
+                  <PostRow key={post.id} post={post} index={i + 1} />
+                ))}
+              </div>
+            )}
+          </>
         )}
       </main>
     </>

@@ -1,5 +1,6 @@
 import Link from "next/link";
-import PostCard from "@/components/PostCard";
+import PostFeature from "@/components/PostFeature";
+import PostRow from "@/components/PostRow";
 import SeguirWidget from "@/components/SeguirWidget";
 import ArtCover from "@/components/ArtCover";
 import Weave from "@/components/Weave";
@@ -119,10 +120,15 @@ function SectionPreview({
           organización en enviar contenido!
         </p>
       ) : (
-        <div className="mt-8 grid gap-x-8 gap-y-10 sm:grid-cols-2 lg:grid-cols-3">
-          {posts.map((post, i) => (
-            <PostCard key={post.id} post={post} index={i} />
-          ))}
+        <div className="mt-8">
+          <PostFeature post={posts[0]} />
+          {posts.length > 1 && (
+            <div className="mt-2">
+              {posts.slice(1).map((post, i) => (
+                <PostRow key={post.id} post={post} index={i + 1} />
+              ))}
+            </div>
+          )}
         </div>
       )}
     </section>
