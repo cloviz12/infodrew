@@ -1,5 +1,6 @@
 import Link from "next/link";
-import PostCard from "@/components/PostCard";
+import PostFeature from "@/components/PostFeature";
+import PostRow from "@/components/PostRow";
 import SeguirWidget from "@/components/SeguirWidget";
 import ArtCover from "@/components/ArtCover";
 import Weave from "@/components/Weave";
@@ -22,40 +23,36 @@ export default async function HomePage({
 
   return (
     <>
-      <section className="border-b-2 border-foreground bg-background">
-        <div className="mx-auto grid max-w-6xl gap-10 px-4 py-14 sm:px-6 sm:py-16 lg:grid-cols-[1.15fr_1fr] lg:items-stretch">
-          <div className="flex flex-col justify-center">
-            <p className="eyebrow text-accent">Plataforma comunitaria</p>
-            <h1 className="mt-4 font-display text-[clamp(2rem,5vw,3.25rem)] font-black leading-[1.08] text-foreground">
-              Conectamos líderes, organizaciones y territorios de{" "}
-              <span style={{ color: "var(--colombia)" }}>Colombia</span> y el{" "}
-              <span style={{ color: "var(--cauca)" }}>Cauca</span>
+      <ArtCover slot={ART.home} tone="ink" className="animated flex h-[64vh] items-end sm:h-[76vh]">
+        <div className="mist-layer" />
+        <div className="w-full px-4 pb-12 pt-28 sm:px-6 sm:pb-16">
+          <div className="mx-auto max-w-6xl">
+            <p className="reveal-up eyebrow text-white/70">Un territorio, muchas voces</p>
+            <h1 className="reveal-up delay-1 mt-4 max-w-3xl font-display text-[clamp(2.1rem,5.2vw,3.75rem)] font-black leading-[1.06] text-white">
+              Colombia y el Cauca, contados por quienes los habitan
             </h1>
-            <p className="mt-5 max-w-xl text-sm leading-relaxed text-muted sm:text-base">
-              Noticias, fotos y videos sobre lo que ocurre en el país y en el
-              territorio caucano: organizaciones sociales, comunidades
-              campesinas, mujeres y comunidades afro. Comenta, comparte y
-              participa.
+            <p className="reveal-up delay-2 mt-5 max-w-xl text-sm leading-relaxed text-white/70 sm:text-base">
+              Noticias, historias y memoria del territorio: organizaciones
+              sociales, comunidades campesinas, mujeres y comunidades afro.
+              Un espacio para que cada voz llegue más lejos.
             </p>
-            <div className="mt-7 flex flex-wrap gap-3">
+            <div className="reveal-up delay-3 mt-7 flex flex-wrap gap-3">
               <Link
                 href="/enviar"
-                className="border-2 border-foreground bg-foreground px-5 py-2.5 text-xs font-extrabold uppercase tracking-wide text-background transition hover:bg-background hover:text-foreground"
+                className="border-2 border-white bg-white px-5 py-2.5 text-xs font-extrabold uppercase tracking-wide text-foreground transition hover:bg-transparent hover:text-white"
               >
                 Envía tu noticia
               </Link>
               <Link
                 href="/cauca"
-                className="border-2 border-foreground px-5 py-2.5 text-xs font-extrabold uppercase tracking-wide text-foreground transition hover:bg-foreground hover:text-background"
+                className="border-2 border-white/70 px-5 py-2.5 text-xs font-extrabold uppercase tracking-wide text-white transition hover:border-white"
               >
                 Ver Cauca
               </Link>
             </div>
           </div>
-
-          <ArtCover slot={ART.home} tone="ink" className="hidden aspect-[4/3] lg:block" />
         </div>
-      </section>
+      </ArtCover>
 
       <Weave id="hero-weave" fg="#4a1c24" height={6} />
 
@@ -119,10 +116,15 @@ function SectionPreview({
           organización en enviar contenido!
         </p>
       ) : (
-        <div className="mt-8 grid gap-x-8 gap-y-10 sm:grid-cols-2 lg:grid-cols-3">
-          {posts.map((post, i) => (
-            <PostCard key={post.id} post={post} index={i} />
-          ))}
+        <div className="mt-8">
+          <PostFeature post={posts[0]} />
+          {posts.length > 1 && (
+            <div className="mt-2">
+              {posts.slice(1).map((post, i) => (
+                <PostRow key={post.id} post={post} index={i + 1} />
+              ))}
+            </div>
+          )}
         </div>
       )}
     </section>
