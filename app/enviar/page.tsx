@@ -16,7 +16,7 @@ export default async function EnviarPage({
 
   return (
     <main className="mx-auto max-w-2xl px-4 py-10">
-      <h1 className="font-display text-3xl font-medium text-foreground sm:text-4xl">Envía tu noticia</h1>
+      <h1 className="font-display text-3xl font-black uppercase tracking-tight text-foreground sm:text-4xl">Envía tu noticia</h1>
       <p className="mt-2 text-base text-muted">
         ¿Perteneces a una organización social, comunidad campesina, colectivo
         de mujeres, comunidad afro o eres un líder del territorio? Cuéntanos
@@ -25,26 +25,26 @@ export default async function EnviarPage({
       </p>
 
       {success && (
-        <p className="mt-6 rounded-sm border border-cauca bg-cauca-light px-4 py-3 text-sm font-medium text-cauca-dark">
+        <p className="mt-6 border-2 border-cauca bg-cauca-light px-4 py-3 text-sm font-bold text-cauca-dark">
           ¡Gracias! Tu contenido fue enviado y quedará publicado en cuanto sea
           revisado por el equipo editorial.
         </p>
       )}
       {error && (
-        <p className="mt-6 rounded-sm border border-colombia-red bg-colombia-red/10 px-4 py-3 text-sm font-medium text-colombia-red">
+        <p className="mt-6 border-2 border-colombia-red bg-colombia-red/10 px-4 py-3 text-sm font-bold text-colombia-red">
           Falta información obligatoria. Revisa el formulario e inténtalo de
           nuevo.
         </p>
       )}
 
-      <form action={submitPost} className="mt-8 flex flex-col gap-5 rounded-sm border border-border bg-surface p-6">
+      <form action={submitPost} className="mt-8 flex flex-col gap-5 border-2 border-foreground bg-surface p-6">
         <Field label="Sección" htmlFor="section">
           <select
             id="section"
             name="section"
             required
             defaultValue="CAUCA"
-            className="rounded-sm border border-border px-3 py-2 text-sm outline-none focus:border-accent"
+            className="border-2 border-border px-3 py-2 text-sm outline-none focus:border-accent"
           >
             <option value="COLOMBIA">Colombia</option>
             <option value="CAUCA">Cauca</option>
@@ -55,7 +55,7 @@ export default async function EnviarPage({
           <input
             id="category"
             name="category"
-            className="rounded-sm border border-border px-3 py-2 text-sm outline-none focus:border-accent"
+            className="border-2 border-border px-3 py-2 text-sm outline-none focus:border-accent"
           />
         </Field>
 
@@ -65,7 +65,7 @@ export default async function EnviarPage({
             name="title"
             required
             maxLength={160}
-            className="rounded-sm border border-border px-3 py-2 text-sm outline-none focus:border-accent"
+            className="border-2 border-border px-3 py-2 text-sm outline-none focus:border-accent"
           />
         </Field>
 
@@ -76,7 +76,7 @@ export default async function EnviarPage({
             required
             maxLength={280}
             rows={2}
-            className="rounded-sm border border-border px-3 py-2 text-sm outline-none focus:border-accent"
+            className="border-2 border-border px-3 py-2 text-sm outline-none focus:border-accent"
           />
         </Field>
 
@@ -86,7 +86,7 @@ export default async function EnviarPage({
             name="content"
             required
             rows={8}
-            className="rounded-sm border border-border px-3 py-2 text-sm outline-none focus:border-accent"
+            className="border-2 border-border px-3 py-2 text-sm outline-none focus:border-accent"
           />
         </Field>
 
@@ -96,7 +96,7 @@ export default async function EnviarPage({
             name="coverImage"
             type="url"
             placeholder="https://…"
-            className="rounded-sm border border-border px-3 py-2 text-sm outline-none focus:border-accent"
+            className="border-2 border-border px-3 py-2 text-sm outline-none focus:border-accent"
           />
         </Field>
 
@@ -110,7 +110,7 @@ export default async function EnviarPage({
             name="mediaUrls"
             rows={3}
             placeholder={"https://ejemplo.com/foto1.jpg\nhttps://youtube.com/watch?v=…"}
-            className="rounded-sm border border-border px-3 py-2 text-sm outline-none focus:border-accent"
+            className="border-2 border-border px-3 py-2 text-sm outline-none focus:border-accent"
           />
         </Field>
 
@@ -121,7 +121,7 @@ export default async function EnviarPage({
               name="authorName"
               required
               maxLength={120}
-              className="rounded-sm border border-border px-3 py-2 text-sm outline-none focus:border-accent"
+              className="border-2 border-border px-3 py-2 text-sm outline-none focus:border-accent"
             />
           </Field>
           <Field label="Organización (opcional)" htmlFor="authorOrg">
@@ -129,7 +129,7 @@ export default async function EnviarPage({
               id="authorOrg"
               name="authorOrg"
               maxLength={160}
-              className="rounded-sm border border-border px-3 py-2 text-sm outline-none focus:border-accent"
+              className="border-2 border-border px-3 py-2 text-sm outline-none focus:border-accent"
             />
           </Field>
         </div>
@@ -139,13 +139,13 @@ export default async function EnviarPage({
             id="authorEmail"
             name="authorEmail"
             type="email"
-            className="rounded-sm border border-border px-3 py-2 text-sm outline-none focus:border-accent"
+            className="border-2 border-border px-3 py-2 text-sm outline-none focus:border-accent"
           />
         </Field>
 
         <button
           type="submit"
-          className="mt-2 rounded-full bg-accent px-6 py-3 text-sm font-bold text-white transition hover:bg-accent-dark"
+          className="mt-2 bg-accent px-6 py-3.5 text-sm font-extrabold uppercase tracking-wide text-white transition hover:bg-accent-dark"
         >
           Enviar para revisión
         </button>

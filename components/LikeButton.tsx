@@ -16,7 +16,7 @@ export default function LikeButton({
     <form action={likeWithArgs}>
       <button
         type="submit"
-        className="flex items-center gap-2 rounded-full border border-border px-4 py-2 text-sm font-semibold text-accent transition hover:bg-accent-light"
+        className="flex items-center gap-2 border-2 border-foreground px-4 py-2 text-sm font-extrabold uppercase tracking-wide text-foreground transition hover:bg-accent hover:border-accent hover:text-white"
       >
         <span>♥</span>
         <span>Me gusta · {formatNumber(likeCount)}</span>

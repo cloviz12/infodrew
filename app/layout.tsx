@@ -1,23 +1,18 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Fraunces } from "next/font/google";
+import { Archivo } from "next/font/google";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+// General Sans (Fontshare) es la tipografía pedida, pero fontshare.com
+// está bloqueado por la política de red de este entorno — mismo bloqueo
+// que Flickr/Vercel. Archivo (Google Fonts) es la alternativa más
+// cercana en peso ExtraBold/Black para el mismo espíritu de cartel;
+// si se agregan los .woff2 de General Sans al repo, se cambia acá por
+// next/font/local sin tocar el resto del sistema.
+const archivo = Archivo({
+  variable: "--font-archivo",
   subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
-
-const fraunces = Fraunces({
-  variable: "--font-fraunces",
-  subsets: ["latin"],
-  axes: ["opsz", "SOFT", "WONK"],
 });
 
 export const metadata: Metadata = {
@@ -28,10 +23,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html
-      lang="es"
-      className={`${geistSans.variable} ${geistMono.variable} ${fraunces.variable} h-full antialiased`}
-    >
+    <html lang="es" className={`${archivo.variable} h-full antialiased`}>
       <body className="flex min-h-full flex-col bg-background text-foreground">
         <Header />
         <div className="flex-1">{children}</div>
