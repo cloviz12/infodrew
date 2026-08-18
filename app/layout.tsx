@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     "Plataforma informativa e interactiva que conecta a líderes nacionales, regionales y a los sectores sociales de Colombia y el Cauca: organizaciones, comunidades campesinas, mujeres y comunidades afro.",
 };
 
-export default function RootLayout({ children }: LayoutProps<"/">) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html
       lang="es"
