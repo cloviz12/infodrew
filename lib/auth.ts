@@ -3,12 +3,18 @@ import { createHmac, timingSafeEqual } from "node:crypto";
 export const ADMIN_COOKIE = "infodrew_admin_session";
 const SESSION_TTL_MS = 1000 * 60 * 60 * 24 * 7; // 7 días
 
+// Si no se define SESSION_SECRET explícitamente, se deriva de DATABASE_URL
+// (que ya es obligatoria) en vez de usar un valor fijo en el código fuente.
+// Así no hace falta configurar una variable de entorno adicional solo para
+// esto, sin exponer ningún secreto real en el repositorio.
 function getSecret() {
-  const secret = process.env.SESSION_SECRET;
-  if (!secret) {
-    throw new Error("Falta la variable de entorno SESSION_SECRET");
+  if (process.env.SESSION_SECRET) return process.env.SESSION_SECRET;
+
+  const databaseUrl = process.env.DATABASE_URL;
+  if (!databaseUrl) {
+    throw new Error("Falta la variable de entorno DATABASE_URL o SESSION_SECRET");
   }
-  return secret;
+  return createHmac("sha256", databaseUrl).update("infodrew-session-secret").digest("hex");
 }
 
 function sign(value: string) {
