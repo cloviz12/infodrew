@@ -25,13 +25,13 @@ principales:
 
 - [Next.js](https://nextjs.org) (App Router, Server Actions) + React + TypeScript
 - Tailwind CSS
-- Prisma ORM + SQLite (base de datos local en `prisma/dev.db`)
+- Prisma ORM + Postgres
 
 ## Primeros pasos
 
 ```bash
 npm install
-cp .env.example .env   # y ajusta ADMIN_PASSWORD y SESSION_SECRET
+cp .env.example .env   # define DATABASE_URL con tu Postgres
 npx prisma migrate deploy
 npm run db:seed        # opcional: carga noticias de ejemplo
 npm run dev
@@ -39,14 +39,19 @@ npm run dev
 
 Abre [http://localhost:3000](http://localhost:3000).
 
+En Vercel: agrega una base de datos Postgres desde la pestaña **Storage**
+del proyecto y conéctala (esto define `DATABASE_URL` automáticamente), y
+agrega `ADMIN_PASSWORD` en **Settings → Environment Variables** con la
+contraseña que quieras usar para entrar a `/admin`.
+
 ## Variables de entorno
 
-| Variable         | Descripción                                                |
-| ---------------- | ----------------------------------------------------------- |
-| `DATABASE_URL`   | Ruta de la base de datos SQLite (`file:./dev.db`)            |
-| `ADMIN_PASSWORD` | Contraseña del panel de moderación (`/admin`)                |
-| `SESSION_SECRET` | Secreto largo y aleatorio para firmar la sesión de admin     |
-| `SITE_URL`       | (opcional) URL pública usada al compartir noticias           |
+| Variable         | Obligatoria | Descripción                                                              |
+| ---------------- | :---------: | ------------------------------------------------------------------------- |
+| `DATABASE_URL`   |     Sí      | Cadena de conexión a Postgres                                             |
+| `ADMIN_PASSWORD` |     Sí      | Contraseña del panel de moderación (`/admin`). No tiene valor por defecto — es una credencial real y debe elegirla quien administra el sitio. |
+| `SESSION_SECRET` |     No      | Secreto para firmar la sesión de admin. Si no se define, se deriva automáticamente de `DATABASE_URL` (ver `lib/auth.ts`), sin exponer ningún secreto en el código. |
+| `SITE_URL`       |     No      | URL pública usada al compartir noticias                                   |
 
 ## Moderación de contenido
 
