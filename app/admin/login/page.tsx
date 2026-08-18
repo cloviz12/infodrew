@@ -15,7 +15,7 @@ export default async function AdminLoginPage({
     <main className="mx-auto flex min-h-[70vh] w-full max-w-sm flex-col justify-center px-4 py-16">
       <h1 className="text-xl font-bold text-foreground">Panel de moderación</h1>
       <p className="mt-1 text-sm text-muted">
-        Acceso restringido al equipo editorial de InfoDrew.
+        Acceso restringido al equipo editorial de Colombia Incluyente.
       </p>
 
       {error && (

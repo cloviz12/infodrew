@@ -20,7 +20,7 @@ export default function SeguirWidget({
             {formatNumber(followerCount)}
           </p>
           <p className="text-sm font-medium text-background/70">
-            {followerCount === 1 ? "persona sigue" : "personas siguen"} InfoDrew
+            {followerCount === 1 ? "persona sigue" : "personas siguen"} Colombia Incluyente
           </p>
           <p className="mt-3 max-w-md text-sm leading-relaxed text-background/60">
             Únete a la comunidad y recibe las noticias más relevantes de

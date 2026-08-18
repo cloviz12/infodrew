@@ -23,9 +23,9 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { slug } = await params;
   const post = await loadPost(slug);
-  if (!post) return { title: "Noticia no encontrada — InfoDrew" };
+  if (!post) return { title: "Noticia no encontrada — Colombia Incluyente" };
   return {
-    title: `${post.title} — InfoDrew`,
+    title: `${post.title} — Colombia Incluyente`,
     description: post.excerpt,
   };
 }
@@ -39,7 +39,7 @@ export default async function PostDetailPage({
   const post = await loadPost(slug);
   if (!post) notFound();
 
-  const siteUrl = process.env.SITE_URL ?? "https://infodrew.example.org";
+  const siteUrl = process.env.SITE_URL ?? "https://colombia-incluyente.example.org";
   const url = `${siteUrl}/noticia/${post.slug}`;
   const gallery = post.coverImage
     ? [

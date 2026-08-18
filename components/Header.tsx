@@ -12,11 +12,11 @@ export default function Header() {
     <header className="sticky top-0 z-40 border-b border-border/80 bg-background/92 backdrop-blur">
       <div className="mx-auto flex max-w-6xl items-center justify-between gap-6 px-4 py-4 sm:px-6">
         <Link href="/" className="flex items-baseline gap-2.5">
-          <span className="font-display text-[1.6rem] font-semibold tracking-tight text-foreground">
-            InfoDrew
+          <span className="font-display text-xl font-semibold tracking-tight text-foreground sm:text-2xl">
+            Colombia Incluyente
           </span>
-          <span className="hidden text-[10px] font-medium uppercase tracking-[0.22em] text-muted sm:inline">
-            Colombia · Cauca
+          <span className="hidden text-[10px] font-medium uppercase tracking-[0.22em] text-muted lg:inline">
+            + Cauca
           </span>
         </Link>
 

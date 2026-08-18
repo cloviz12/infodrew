@@ -21,7 +21,7 @@ const fraunces = Fraunces({
 });
 
 export const metadata: Metadata = {
-  title: "InfoDrew — Colombia y Cauca en conexión",
+  title: "Colombia Incluyente — Colombia y Cauca en conexión",
   description:
     "Plataforma informativa e interactiva que conecta a líderes nacionales, regionales y a los sectores sociales de Colombia y el Cauca: organizaciones, comunidades campesinas, mujeres y comunidades afro.",
 };

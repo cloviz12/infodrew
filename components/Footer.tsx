@@ -5,7 +5,7 @@ export default function Footer() {
     <footer className="mt-20 border-t border-border bg-background">
       <div className="mx-auto grid max-w-6xl gap-10 px-4 py-14 sm:px-6 sm:grid-cols-3">
         <div>
-          <p className="font-display text-xl font-semibold text-foreground">InfoDrew</p>
+          <p className="font-display text-xl font-semibold text-foreground">Colombia Incluyente</p>
           <p className="mt-3 max-w-xs text-sm leading-relaxed text-muted">
             Una plataforma informativa e interactiva que conecta a líderes
             nacionales, regionales y a los diferentes sectores del territorio:
@@ -35,7 +35,7 @@ export default function Footer() {
       </div>
 
       <div className="border-t border-border px-4 py-5 text-center text-xs text-muted">
-        © {new Date().getFullYear()} InfoDrew — Contenido enviado por la
+        © {new Date().getFullYear()} Colombia Incluyente — Contenido enviado por la
         comunidad, revisado antes de publicarse.
       </div>
     </footer>
