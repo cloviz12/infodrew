@@ -1,0 +1,179 @@
+import type { Metadata } from "next";
+import { submitPost } from "@/app/actions";
+
+export const metadata: Metadata = {
+  title: "Envía tu noticia — InfoDrew",
+  description:
+    "Envía noticias, fotos y videos de tu organización o comunidad para que sean revisados y publicados en InfoDrew.",
+};
+
+export default async function EnviarPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ success?: string; error?: string }>;
+}) {
+  const { success, error } = await searchParams;
+
+  return (
+    <main className="mx-auto max-w-2xl px-4 py-10">
+      <h1 className="text-3xl font-black text-foreground">Envía tu noticia</h1>
+      <p className="mt-2 text-base text-muted">
+        ¿Perteneces a una organización social, comunidad campesina, colectivo
+        de mujeres, comunidad afro o eres un líder del territorio? Cuéntanos
+        lo que está pasando. Nuestro equipo revisará tu contenido antes de
+        publicarlo.
+      </p>
+
+      {success && (
+        <p className="mt-6 rounded-xl border border-cauca bg-cauca-light px-4 py-3 text-sm font-medium text-cauca-dark">
+          ¡Gracias! Tu contenido fue enviado y quedará publicado en cuanto sea
+          revisado por el equipo editorial.
+        </p>
+      )}
+      {error && (
+        <p className="mt-6 rounded-xl border border-colombia-red bg-colombia-red/10 px-4 py-3 text-sm font-medium text-colombia-red">
+          Falta información obligatoria. Revisa el formulario e inténtalo de
+          nuevo.
+        </p>
+      )}
+
+      <form action={submitPost} className="mt-8 flex flex-col gap-5 rounded-2xl border border-border bg-surface p-6">
+        <Field label="Sección" htmlFor="section">
+          <select
+            id="section"
+            name="section"
+            required
+            defaultValue="CAUCA"
+            className="rounded-lg border border-border px-3 py-2 text-sm outline-none focus:border-colombia"
+          >
+            <option value="COLOMBIA">Colombia</option>
+            <option value="CAUCA">Cauca</option>
+          </select>
+        </Field>
+
+        <Field label="Categoría" htmlFor="category" hint="Ej: comunidades campesinas, mujeres, comunidad afro, organizaciones sociales…">
+          <input
+            id="category"
+            name="category"
+            className="rounded-lg border border-border px-3 py-2 text-sm outline-none focus:border-colombia"
+          />
+        </Field>
+
+        <Field label="Título" htmlFor="title" required>
+          <input
+            id="title"
+            name="title"
+            required
+            maxLength={160}
+            className="rounded-lg border border-border px-3 py-2 text-sm outline-none focus:border-colombia"
+          />
+        </Field>
+
+        <Field label="Resumen breve" htmlFor="excerpt" required hint="Máximo 280 caracteres, aparece en las tarjetas de noticias.">
+          <textarea
+            id="excerpt"
+            name="excerpt"
+            required
+            maxLength={280}
+            rows={2}
+            className="rounded-lg border border-border px-3 py-2 text-sm outline-none focus:border-colombia"
+          />
+        </Field>
+
+        <Field label="Contenido completo" htmlFor="content" required>
+          <textarea
+            id="content"
+            name="content"
+            required
+            rows={8}
+            className="rounded-lg border border-border px-3 py-2 text-sm outline-none focus:border-colombia"
+          />
+        </Field>
+
+        <Field label="Imagen de portada (URL)" htmlFor="coverImage" hint="Enlace directo a una imagen (https://…)">
+          <input
+            id="coverImage"
+            name="coverImage"
+            type="url"
+            placeholder="https://…"
+            className="rounded-lg border border-border px-3 py-2 text-sm outline-none focus:border-colombia"
+          />
+        </Field>
+
+        <Field
+          label="Fotos y videos adicionales"
+          htmlFor="mediaUrls"
+          hint="Un enlace por línea (imágenes, video de YouTube o archivo .mp4)."
+        >
+          <textarea
+            id="mediaUrls"
+            name="mediaUrls"
+            rows={3}
+            placeholder={"https://ejemplo.com/foto1.jpg\nhttps://youtube.com/watch?v=…"}
+            className="rounded-lg border border-border px-3 py-2 text-sm outline-none focus:border-colombia"
+          />
+        </Field>
+
+        <div className="grid gap-5 sm:grid-cols-2">
+          <Field label="Tu nombre" htmlFor="authorName" required>
+            <input
+              id="authorName"
+              name="authorName"
+              required
+              maxLength={120}
+              className="rounded-lg border border-border px-3 py-2 text-sm outline-none focus:border-colombia"
+            />
+          </Field>
+          <Field label="Organización (opcional)" htmlFor="authorOrg">
+            <input
+              id="authorOrg"
+              name="authorOrg"
+              maxLength={160}
+              className="rounded-lg border border-border px-3 py-2 text-sm outline-none focus:border-colombia"
+            />
+          </Field>
+        </div>
+
+        <Field label="Correo de contacto (opcional)" htmlFor="authorEmail">
+          <input
+            id="authorEmail"
+            name="authorEmail"
+            type="email"
+            className="rounded-lg border border-border px-3 py-2 text-sm outline-none focus:border-colombia"
+          />
+        </Field>
+
+        <button
+          type="submit"
+          className="mt-2 rounded-full bg-colombia px-6 py-3 text-sm font-bold text-white transition hover:bg-colombia-dark"
+        >
+          Enviar para revisión
+        </button>
+      </form>
+    </main>
+  );
+}
+
+function Field({
+  label,
+  htmlFor,
+  hint,
+  required,
+  children,
+}: {
+  label: string;
+  htmlFor: string;
+  hint?: string;
+  required?: boolean;
+  children: React.ReactNode;
+}) {
+  return (
+    <div className="flex flex-col gap-1.5">
+      <label htmlFor={htmlFor} className="text-sm font-semibold text-foreground">
+        {label} {required && <span className="text-colombia-red">*</span>}
+      </label>
+      {children}
+      {hint && <p className="text-xs text-muted">{hint}</p>}
+    </div>
+  );
+}
