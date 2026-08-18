@@ -79,10 +79,61 @@ const posts = [
     coverImage: "https://images.unsplash.com/photo-1521791136064-7986c2920216?w=1200&q=80",
     isOfficial: true,
   },
+  {
+    // Post de PRUEBA para validar el flujo de fotos + video subidos en el
+    // PR #11 (public/media/cauca-2026-08 y el release media-cauca-2026-08).
+    // Título/texto son placeholder a propósito, sin afirmaciones de hechos
+    // reales: reemplazar por la redacción real antes de usarlo en producción.
+    title: "[PRUEBA] Recorrido por el territorio del Cauca",
+    excerpt:
+      "Contenido de prueba para validar fotos y video en el sitio. Pendiente de redacción real.",
+    content:
+      "Este artículo es un marcador de posición (placeholder) creado para probar que las fotos y videos subidos se ven correctamente en el sitio. No describe un hecho real y debe reemplazarse por contenido editorial verificado antes de publicarse.",
+    section: "CAUCA",
+    category: "Territorio",
+    authorName: "Equipo Editorial Colombia Incluyente (prueba)",
+    authorOrg: null,
+    coverImage: "/media/cauca-2026-08/53706333279_e37fea4fc2_k.jpg",
+    isOfficial: false,
+    media: [
+      { type: "IMAGE", url: "/media/cauca-2026-08/54135067373_e1a33daa01_k.jpg", order: 0 },
+      { type: "IMAGE", url: "/media/cauca-2026-08/54135119049_b33738fa7d_k.jpg", order: 1 },
+      { type: "IMAGE", url: "/media/cauca-2026-08/54135272664_cd35293fd4_k.jpg", order: 2 },
+      { type: "IMAGE", url: "/media/cauca-2026-08/54470254527_1f65311414_h.jpg", order: 3 },
+      { type: "IMAGE", url: "/media/cauca-2026-08/54471093276_58226e487e_h.jpg", order: 4 },
+      { type: "IMAGE", url: "/media/cauca-2026-08/54471093406_3fc6472920_b.jpg", order: 5 },
+      { type: "IMAGE", url: "/media/cauca-2026-08/54471453975_01f8f1ce74_h.jpg", order: 6 },
+      {
+        type: "VIDEO",
+        url: "https://github.com/cloviz12/infodrew/releases/download/media-cauca-2026-08/DJI_0008.MP4",
+        order: 7,
+      },
+      {
+        type: "VIDEO",
+        url: "https://github.com/cloviz12/infodrew/releases/download/media-cauca-2026-08/DJI_0009.MP4",
+        order: 8,
+      },
+      {
+        type: "VIDEO",
+        url: "https://github.com/cloviz12/infodrew/releases/download/media-cauca-2026-08/DJI_0012.MP4",
+        order: 9,
+      },
+      {
+        type: "VIDEO",
+        url: "https://github.com/cloviz12/infodrew/releases/download/media-cauca-2026-08/DJI_0021.MP4",
+        order: 10,
+      },
+      {
+        type: "VIDEO",
+        url: "https://github.com/cloviz12/infodrew/releases/download/media-cauca-2026-08/DJI_0025.MP4",
+        order: 11,
+      },
+    ],
+  },
 ];
 
 async function main() {
-  for (const post of posts) {
+  for (const { media, ...post } of posts) {
     const slug = slugify(post.title);
     await prisma.post.upsert({
       where: { slug },
@@ -92,6 +143,7 @@ async function main() {
         slug,
         status: "PUBLISHED",
         publishedAt: new Date(),
+        ...(media ? { media: { create: media } } : {}),
       },
     });
   }
