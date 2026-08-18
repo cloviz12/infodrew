@@ -2,7 +2,6 @@ import type { Section } from "@prisma/client";
 import PostFeature from "@/components/PostFeature";
 import PostRow from "@/components/PostRow";
 import ArtCover from "@/components/ArtCover";
-import Weave from "@/components/Weave";
 import { getPublishedPosts } from "@/lib/data";
 import { ART } from "@/lib/art";
 
@@ -30,24 +29,22 @@ const COPY: Record<
 
 export default async function SectionListing({ section }: { section: Section }) {
   const copy = COPY[section];
-  const color = `var(--${copy.tone})`;
   const posts = await getPublishedPosts(section);
 
   return (
     <>
-      <ArtCover slot={copy.slot} tone={copy.tone} className="h-[22vh] sm:h-[26vh]" />
-      <Weave id={`${copy.tone}-weave`} fg={color} bg="#201d19" height={6} />
-
-      <div className="bg-foreground px-4 py-10 text-background sm:px-6 sm:py-12">
-        <div className="mx-auto max-w-6xl">
-          <h1 className="font-display text-4xl font-black uppercase tracking-tight sm:text-5xl" style={{ color }}>
-            {copy.title}
-          </h1>
-          <p className="mt-3 max-w-xl text-sm leading-relaxed text-background/65 sm:text-base">
-            {copy.description}
-          </p>
+      <ArtCover slot={copy.slot} tone={copy.tone} className="h-[30vh] items-end sm:h-[36vh]">
+        <div className="w-full px-4 pb-10 sm:px-6">
+          <div className="mx-auto max-w-6xl">
+            <h1 className="font-display text-4xl font-black tracking-tight text-white sm:text-5xl">
+              {copy.title}
+            </h1>
+            <p className="mt-3 max-w-xl text-sm leading-relaxed text-white/75 sm:text-base">
+              {copy.description}
+            </p>
+          </div>
         </div>
-      </div>
+      </ArtCover>
 
       <main className="mx-auto max-w-6xl px-4 py-14 sm:px-6">
         {posts.length === 0 ? (
