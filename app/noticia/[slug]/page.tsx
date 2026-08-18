@@ -52,16 +52,16 @@ export default async function PostDetailPage({
     <main className="mx-auto max-w-3xl px-4 py-10">
       <div className="flex flex-wrap items-center gap-2.5">
         <SectionBadge section={post.section} />
-        <span className="text-[11px] uppercase tracking-[0.1em] text-muted">
+        <span className="text-[11px] font-bold uppercase tracking-[0.1em] text-muted">
           {post.category}
         </span>
       </div>
 
-      <h1 className="mt-4 font-display text-3xl font-medium leading-[1.1] text-foreground sm:text-4xl">
+      <h1 className="mt-4 font-display text-3xl font-black leading-[1.05] text-foreground sm:text-4xl">
         {post.title}
       </h1>
 
-      <p className="mt-3 text-sm text-muted">
+      <p className="mt-3 text-sm font-semibold text-muted">
         Por {post.authorOrg ?? post.authorName} · {formatDate(post.publishedAt ?? post.createdAt)}
       </p>
 
@@ -77,7 +77,7 @@ export default async function PostDetailPage({
         ))}
       </div>
 
-      <div className="mt-8 flex flex-wrap items-center justify-between gap-3 border-y border-border py-4">
+      <div className="mt-8 flex flex-wrap items-center justify-between gap-3 border-y-2 border-foreground py-4">
         <LikeButton postId={post.id} postSlug={post.slug} likeCount={post.likeCount} />
         <ShareButtons title={post.title} url={url} />
       </div>

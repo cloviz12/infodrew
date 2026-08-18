@@ -1,12 +1,17 @@
 import Link from "next/link";
+import Weave from "@/components/Weave";
 
 export default function Footer() {
   return (
-    <footer className="mt-20 border-t border-border bg-background">
+    <footer className="mt-20 bg-foreground text-background">
+      <Weave id="footer-weave" fg="#4a1c24" height={6} />
+
       <div className="mx-auto grid max-w-6xl gap-10 px-4 py-14 sm:px-6 sm:grid-cols-3">
         <div>
-          <p className="font-display text-xl font-semibold text-foreground">Colombia Incluyente</p>
-          <p className="mt-3 max-w-xs text-sm leading-relaxed text-muted">
+          <p className="font-display text-xl font-black uppercase tracking-tight">
+            Colombia Incluyente
+          </p>
+          <p className="mt-3 max-w-xs text-sm leading-relaxed text-background/60">
             Una plataforma informativa e interactiva que conecta a líderes
             nacionales, regionales y a los diferentes sectores del territorio:
             organizaciones sociales, comunidades campesinas, mujeres y
@@ -15,8 +20,8 @@ export default function Footer() {
         </div>
 
         <div>
-          <p className="eyebrow text-muted">Explorar</p>
-          <ul className="mt-4 space-y-2.5 text-sm text-foreground/80">
+          <p className="eyebrow text-accent">Explorar</p>
+          <ul className="mt-4 space-y-2.5 text-sm font-semibold text-background/85">
             <li><Link className="transition hover:text-accent" href="/colombia">Colombia</Link></li>
             <li><Link className="transition hover:text-accent" href="/cauca">Cauca</Link></li>
             <li><Link className="transition hover:text-accent" href="/enviar">Envía tu noticia</Link></li>
@@ -25,8 +30,8 @@ export default function Footer() {
         </div>
 
         <div>
-          <p className="eyebrow text-muted">Participa</p>
-          <p className="mt-4 text-sm leading-relaxed text-muted">
+          <p className="eyebrow text-accent">Participa</p>
+          <p className="mt-4 text-sm leading-relaxed text-background/60">
             ¿Perteneces a una organización social, comunidad o colectivo?
             Envíanos tu noticia, fotos o video y ayúdanos a contar lo que
             pasa en tu territorio.
@@ -34,7 +39,7 @@ export default function Footer() {
         </div>
       </div>
 
-      <div className="border-t border-border px-4 py-5 text-center text-xs text-muted">
+      <div className="border-t border-background/15 px-4 py-5 text-center text-xs font-semibold uppercase tracking-wide text-background/50">
         © {new Date().getFullYear()} Colombia Incluyente — Contenido enviado por la
         comunidad, revisado antes de publicarse.
       </div>

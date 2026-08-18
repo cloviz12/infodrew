@@ -1,29 +1,32 @@
 @import "tailwindcss";
 
 :root {
-  /* Papel editorial, no "banner de gobierno": tinta cálida sobre papel
-     crema, con un único acento (terracota) que hace de firma visual del
-     sitio. Colombia/Cauca quedan como identificadores de sección
-     (etiquetas pequeñas), no como el color dominante de la interfaz. */
-  --background: #f4eee0;
-  --surface: #fffcf4;
-  --foreground: #1c1710;
-  --muted: #6f6754;
-  --border: #e3d7bb;
+  /* Mismo lenguaje gráfico (bloques planos, tipografía pesada,
+     zigzag textil — ver components/Weave.tsx) pero con una paleta
+     sobria de prensa tradicional en vez del rojo de cartel: carbón
+     cálido de fondo, vino tinto apagado como firma, azul marino y
+     oliva como identificadores de sección. Nada de rojo saturado ni
+     dorado brillante — eso es lo que hacía sentir el sitio como
+     landing page urgente en vez de medio editorial. */
+  --background: #ece5d5;
+  --surface: #f7f2e6;
+  --foreground: #201d19;
+  --muted: #6b6355;
+  --border: #d9cdb0;
 
-  --accent: #c1502e;
-  --accent-dark: #8a381d;
-  --accent-light: #f1ded2;
+  --accent: #6d2a35;
+  --accent-dark: #4a1c24;
+  --accent-light: #e4d7d5;
 
-  --colombia: #33436e;
-  --colombia-dark: #1c2740;
-  --colombia-gold: #c9a24b;
-  --colombia-red: #a8412c;
+  --colombia: #263a4f;
+  --colombia-dark: #16222f;
+  --colombia-gold: #a9863f;
+  --colombia-red: #6d2a35;
 
-  --cauca: #3f5b42;
-  --cauca-dark: #223022;
-  --cauca-earth: #8a5a34;
-  --cauca-light: #e9e2c9;
+  --cauca: #3c4a34;
+  --cauca-dark: #232c1e;
+  --cauca-earth: #7a5738;
+  --cauca-light: #e1dcc8;
 }
 
 @theme inline {
@@ -47,9 +50,8 @@
   --color-cauca-earth: var(--cauca-earth);
   --color-cauca-light: var(--cauca-light);
 
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-  --font-display: var(--font-fraunces);
+  --font-sans: var(--font-archivo);
+  --font-display: var(--font-archivo);
 }
 
 body {
@@ -75,54 +77,72 @@ body {
   text-transform: uppercase;
 }
 
-/* --- Sistema editorial --------------------------------------------- */
+/* --- Sistema visual: prensa tradicional + geometría textil --------- */
 
 .font-display {
-  font-family: var(--font-display), Georgia, serif;
+  font-family: var(--font-display), "Arial Black", sans-serif;
+  font-stretch: normal;
 }
 
+/* Etiqueta pequeña en mayúsculas con un guion — dispositivo tipográfico
+   de cartel, no un badge de app. */
 .eyebrow {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
   font-size: 0.72rem;
-  font-weight: 600;
-  letter-spacing: 0.16em;
+  font-weight: 800;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
 }
 
 .eyebrow::before {
   content: "";
   display: inline-block;
-  width: 1.25rem;
-  height: 1.5px;
+  width: 1.5rem;
+  height: 4px;
   background: currentColor;
-  opacity: 0.6;
 }
 
 .hairline {
   border-color: var(--border);
 }
 
-/* Textura de grano de papel, sutil, para paneles de arte y fondos
-   oscuros: rompe el aspecto plano/corporativo. Capa independiente para
-   no pasar por encima del texto y afectar la legibilidad. */
+/* Barra sólida gruesa: el divisor constructivista en vez del hairline
+   fino de un blog. */
+.rule-thick {
+  height: 6px;
+  background: var(--foreground);
+}
+
+/* Etiqueta vertical rotada tipo "lomo de revista" — COLOMBIA · CAUCA
+   corriendo por el borde de la pantalla. */
+.spine {
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+}
+
+/* Textura de grano/impresión, sutil, sobre los paneles de arte: rompe
+   el aspecto de foto de stock plana, evoca cartel serigrafiado. Capa
+   independiente para no pasar por encima del texto. */
 .grain-layer {
   position: absolute;
   inset: 0;
   pointer-events: none;
-  opacity: 0.3;
+  opacity: 0.25;
   mix-blend-mode: overlay;
   background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix type='saturate' values='0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
   background-size: 180px 180px;
 }
 
-/* Panel de arte tipo "pantalla de carga" (WeTransfer): imagen o pintura
-   generada a pantalla completa + grano + velo de color. Si no hay
-   imagen (ver lib/art.ts), el degradado hace de obra abstracta. */
+/* Panel de arte a pantalla completa: foto en duotono (o composición
+   geométrica generada si todavía no hay foto, ver lib/art.ts) + grano.
+   El duotono es literal: blanco y negro + una sola tinta plana, como
+   un cartel de propaganda constructivista, no un filtro Instagram. */
 .art-cover {
   position: relative;
   overflow: hidden;
+  background-color: var(--foreground);
 }
 
 .art-cover img {
@@ -131,11 +151,14 @@ body {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  filter: grayscale(1) contrast(1.05) brightness(0.92);
 }
 
-.art-cover .art-veil {
+.art-cover .art-tint {
   position: absolute;
   inset: 0;
+  mix-blend-mode: multiply;
+  opacity: 0.75;
 }
 
 .art-cover .art-content {
