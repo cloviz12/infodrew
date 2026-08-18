@@ -50,14 +50,14 @@ export default async function PostDetailPage({
 
   return (
     <main className="mx-auto max-w-3xl px-4 py-10">
-      <div className="flex flex-wrap items-center gap-2">
+      <div className="flex flex-wrap items-center gap-2.5">
         <SectionBadge section={post.section} />
-        <span className="text-xs font-medium uppercase tracking-wide text-muted">
+        <span className="text-[11px] uppercase tracking-[0.1em] text-muted">
           {post.category}
         </span>
       </div>
 
-      <h1 className="mt-3 text-3xl font-black leading-tight text-foreground">
+      <h1 className="mt-4 font-display text-3xl font-medium leading-[1.1] text-foreground sm:text-4xl">
         {post.title}
       </h1>
 

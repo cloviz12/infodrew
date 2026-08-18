@@ -12,39 +12,40 @@ export default function PostCard({ post }: { post: PostWithExtras }) {
   const image = post.coverImage ?? post.media.find((m) => m.type === "IMAGE")?.url;
 
   return (
-    <article className="group flex flex-col overflow-hidden rounded-2xl border border-border bg-surface transition hover:shadow-md">
-      <Link href={`/noticia/${post.slug}`} className="block aspect-[16/10] w-full overflow-hidden bg-cauca-light">
+    <article className="group flex flex-col">
+      <Link
+        href={`/noticia/${post.slug}`}
+        className="block aspect-[4/3] w-full overflow-hidden rounded-sm bg-accent-light"
+      >
         {image ? (
           // eslint-disable-next-line @next/next/no-img-element
           <img
             src={image}
             alt={post.title}
-            className="h-full w-full object-cover transition duration-300 group-hover:scale-105"
+            className="h-full w-full object-cover grayscale-[15%] transition duration-500 ease-out group-hover:scale-[1.03] group-hover:grayscale-0"
           />
         ) : (
-          <div className="flex h-full w-full items-center justify-center text-sm text-muted">
+          <div className="flex h-full w-full items-center justify-center font-display text-sm italic text-accent-dark/60">
             Sin imagen
           </div>
         )}
       </Link>
 
-      <div className="flex flex-1 flex-col gap-2 p-4">
-        <div className="flex flex-wrap items-center gap-2">
+      <div className="flex flex-1 flex-col gap-2.5 pt-4">
+        <div className="flex flex-wrap items-center gap-2.5">
           <SectionBadge section={post.section} />
-          <span className="text-xs font-medium uppercase tracking-wide text-muted">
-            {post.category}
-          </span>
+          <span className="text-[11px] uppercase tracking-[0.1em] text-muted">{post.category}</span>
         </div>
 
         <Link href={`/noticia/${post.slug}`}>
-          <h3 className="text-lg font-bold leading-snug text-foreground group-hover:text-colombia">
+          <h3 className="font-display text-xl font-medium leading-snug text-foreground transition group-hover:text-accent">
             {post.title}
           </h3>
         </Link>
 
-        <p className="line-clamp-2 flex-1 text-sm text-muted">{post.excerpt}</p>
+        <p className="line-clamp-2 flex-1 text-sm leading-relaxed text-muted">{post.excerpt}</p>
 
-        <div className="mt-2 flex items-center justify-between text-xs text-muted">
+        <div className="mt-1 flex items-center justify-between border-t border-border pt-2.5 text-xs text-muted">
           <span>
             {post.authorOrg ?? post.authorName} · {formatDate(post.publishedAt ?? post.createdAt)}
           </span>

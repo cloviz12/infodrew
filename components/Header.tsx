@@ -9,26 +9,23 @@ const links = [
 
 export default function Header() {
   return (
-    <header className="sticky top-0 z-40 border-b border-border bg-colombia-dark text-white">
-      <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-3">
-        <Link href="/" className="flex items-center gap-2">
-          <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-cauca text-sm font-black">
-            ID
+    <header className="sticky top-0 z-40 border-b border-border/80 bg-background/92 backdrop-blur">
+      <div className="mx-auto flex max-w-6xl items-center justify-between gap-6 px-4 py-4 sm:px-6">
+        <Link href="/" className="flex items-baseline gap-2.5">
+          <span className="font-display text-[1.6rem] font-semibold tracking-tight text-foreground">
+            InfoDrew
           </span>
-          <span className="flex flex-col leading-tight">
-            <span className="text-base font-bold">InfoDrew</span>
-            <span className="text-[11px] font-medium text-white/70">
-              Colombia · Cauca en conexión
-            </span>
+          <span className="hidden text-[10px] font-medium uppercase tracking-[0.22em] text-muted sm:inline">
+            Colombia · Cauca
           </span>
         </Link>
 
-        <nav className="hidden items-center gap-1 md:flex">
+        <nav className="hidden items-center gap-8 md:flex">
           {links.map((link) => (
             <Link
               key={link.href}
               href={link.href}
-              className="rounded-md px-3 py-2 text-sm font-medium text-white/85 transition hover:bg-white/10 hover:text-white"
+              className="text-[13px] font-medium uppercase tracking-[0.08em] text-foreground/75 transition hover:text-accent"
             >
               {link.label}
             </Link>
@@ -37,18 +34,18 @@ export default function Header() {
 
         <Link
           href="/#seguir"
-          className="rounded-full bg-colombia-gold px-4 py-2 text-sm font-bold text-colombia-dark transition hover:brightness-95"
+          className="hidden shrink-0 rounded-full border border-foreground/20 px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.1em] text-foreground transition hover:border-accent hover:text-accent sm:inline-flex"
         >
           Síguenos
         </Link>
       </div>
 
-      <nav className="flex items-center gap-1 overflow-x-auto border-t border-white/10 px-4 py-2 md:hidden">
+      <nav className="flex items-center gap-5 overflow-x-auto border-t border-border/70 px-4 py-2.5 md:hidden">
         {links.map((link) => (
           <Link
             key={link.href}
             href={link.href}
-            className="shrink-0 rounded-md px-3 py-1.5 text-sm font-medium text-white/85 hover:bg-white/10"
+            className="shrink-0 text-xs font-medium uppercase tracking-[0.06em] text-foreground/75"
           >
             {link.label}
           </Link>

@@ -31,7 +31,7 @@ export default function ShareButtons({ title, url }: { title: string; url: strin
       <button
         type="button"
         onClick={handleShare}
-        className="rounded-full border border-border px-4 py-2 text-sm font-medium text-foreground transition hover:border-colombia hover:text-colombia"
+        className="rounded-full border border-border px-4 py-2 text-sm font-medium text-foreground transition hover:border-accent hover:text-accent"
       >
         {copied ? "¡Enlace copiado!" : "Compartir"}
       </button>
@@ -39,7 +39,7 @@ export default function ShareButtons({ title, url }: { title: string; url: strin
         href={whatsappHref}
         target="_blank"
         rel="noopener noreferrer"
-        className="rounded-full border border-border px-4 py-2 text-sm font-medium text-foreground transition hover:border-cauca hover:text-cauca"
+        className="rounded-full border border-border px-4 py-2 text-sm font-medium text-foreground transition hover:border-cauca-dark hover:text-cauca-dark"
       >
         WhatsApp
       </a>
@@ -47,7 +47,7 @@ export default function ShareButtons({ title, url }: { title: string; url: strin
         href={facebookHref}
         target="_blank"
         rel="noopener noreferrer"
-        className="rounded-full border border-border px-4 py-2 text-sm font-medium text-foreground transition hover:border-colombia hover:text-colombia"
+        className="rounded-full border border-border px-4 py-2 text-sm font-medium text-foreground transition hover:border-accent hover:text-accent"
       >
         Facebook
       </a>

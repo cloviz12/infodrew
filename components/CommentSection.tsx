@@ -15,16 +15,16 @@ export default function CommentSection({
 
   return (
     <section className="mt-10 border-t border-border pt-8">
-      <h2 className="text-lg font-bold text-foreground">
+      <h2 className="font-display text-xl font-medium text-foreground">
         Comentarios ({comments.length})
       </h2>
 
-      <form action={addCommentWithArgs} className="mt-4 flex flex-col gap-3 rounded-xl border border-border bg-surface p-4">
+      <form action={addCommentWithArgs} className="mt-4 flex flex-col gap-3 rounded-sm border border-border bg-surface p-4">
         <div className="grid gap-3 sm:grid-cols-2">
           <input
             name="authorName"
             placeholder="Tu nombre (opcional)"
-            className="rounded-lg border border-border px-3 py-2 text-sm outline-none focus:border-colombia"
+            className="rounded-sm border border-border px-3 py-2 text-sm outline-none focus:border-accent"
             maxLength={80}
           />
         </div>
@@ -34,11 +34,11 @@ export default function CommentSection({
           placeholder="Escribe tu comentario…"
           rows={3}
           maxLength={2000}
-          className="rounded-lg border border-border px-3 py-2 text-sm outline-none focus:border-colombia"
+          className="rounded-sm border border-border px-3 py-2 text-sm outline-none focus:border-accent"
         />
         <button
           type="submit"
-          className="self-end rounded-full bg-colombia px-5 py-2 text-sm font-semibold text-white transition hover:bg-colombia-dark"
+          className="self-end rounded-full bg-accent px-5 py-2 text-sm font-semibold text-white transition hover:bg-accent-dark"
         >
           Comentar
         </button>
