@@ -1,12 +1,5 @@
 import type { Media } from "@prisma/client";
-
-function getYoutubeEmbed(url: string) {
-  const watch = url.match(/[?&]v=([\w-]{6,})/);
-  if (watch) return `https://www.youtube.com/embed/${watch[1]}`;
-  const short = url.match(/youtu\.be\/([\w-]{6,})/);
-  if (short) return `https://www.youtube.com/embed/${short[1]}`;
-  return null;
-}
+import { getYoutubeEmbed } from "@/lib/video";
 
 function VideoBlock({ url, caption }: { url: string; caption?: string | null }) {
   const embed = getYoutubeEmbed(url);
@@ -16,12 +9,12 @@ function VideoBlock({ url, caption }: { url: string; caption?: string | null }) 
         <iframe
           src={embed}
           title={caption ?? "Video"}
-          className="aspect-video w-full bg-foreground"
+          className="aspect-video w-full rounded-2xl bg-ink"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowFullScreen
         />
       ) : (
-        <video src={url} controls className="aspect-video w-full bg-foreground">
+        <video src={url} controls className="aspect-video w-full rounded-2xl bg-ink">
           <track kind="captions" />
         </video>
       )}
@@ -33,8 +26,7 @@ function VideoBlock({ url, caption }: { url: string; caption?: string | null }) 
 }
 
 // Cada foto o video ocupa el ancho completo de la columna de lectura,
-// en fila, como las láminas de una revista — no una grilla de miniaturas
-// en cajas con borde.
+// en fila, como las láminas de una revista.
 export default function MediaGallery({ media }: { media: Media[] }) {
   if (media.length === 0) return null;
 
@@ -46,7 +38,7 @@ export default function MediaGallery({ media }: { media: Media[] }) {
         ) : (
           <figure key={item.id}>
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={item.url} alt={item.caption ?? "Imagen"} className="w-full object-cover" />
+            <img src={item.url} alt={item.caption ?? "Imagen"} className="w-full rounded-2xl object-cover" />
             {item.caption && (
               <figcaption className="mt-2 border-l-2 border-accent pl-3 text-xs italic text-muted">
                 {item.caption}

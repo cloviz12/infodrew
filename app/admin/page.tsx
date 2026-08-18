@@ -26,7 +26,7 @@ export default async function AdminPage() {
     <main className="mx-auto max-w-5xl px-4 py-10">
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-black uppercase tracking-tight text-foreground">Panel de moderación</h1>
+          <h1 className="font-display text-2xl font-black text-foreground">Panel de moderación</h1>
           <p className="mt-1 text-sm text-muted">
             {formatNumber(pending.length)} envío(s) pendiente(s) ·{" "}
             {formatNumber(followerCount)} seguidores
@@ -35,7 +35,7 @@ export default async function AdminPage() {
         <form action="/api/admin/logout" method="POST">
           <button
             type="submit"
-            className="border-2 border-foreground px-4 py-2 text-sm font-extrabold uppercase tracking-wide text-foreground hover:bg-colombia-red hover:border-colombia-red hover:text-white"
+            className="rounded-full border border-border px-4 py-2 text-sm font-bold text-foreground transition hover:border-colombia-red hover:bg-colombia-red/10 hover:text-colombia-red"
           >
             Cerrar sesión
           </button>

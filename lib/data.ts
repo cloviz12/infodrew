@@ -62,3 +62,49 @@ export function getModeratedPosts() {
 export async function getFollowerCount() {
   return safe(0, () => prisma.follower.count());
 }
+
+export function getLatestPosts(limit = 3) {
+  return safe([], () =>
+    prisma.post.findMany({
+      where: { status: "PUBLISHED" },
+      orderBy: { publishedAt: "desc" },
+      take: limit,
+      include: { media: { orderBy: { order: "asc" } }, _count: { select: { comments: true } } },
+    })
+  );
+}
+
+export function getMostCommentedPosts(limit = 3) {
+  return safe([], () =>
+    prisma.post.findMany({
+      where: { status: "PUBLISHED" },
+      orderBy: { comments: { _count: "desc" } },
+      take: limit,
+      include: { media: { orderBy: { order: "asc" } }, _count: { select: { comments: true } } },
+    })
+  );
+}
+
+export function getFeaturedVideoPost() {
+  return safe(null, () =>
+    prisma.post.findFirst({
+      where: { status: "PUBLISHED", media: { some: { type: "VIDEO" } } },
+      orderBy: { publishedAt: "desc" },
+      include: { media: { orderBy: { order: "asc" } }, _count: { select: { comments: true } } },
+    })
+  );
+}
+
+export function getPostsByKeywords(keywords: string[], limit?: number) {
+  return safe([], () =>
+    prisma.post.findMany({
+      where: {
+        status: "PUBLISHED",
+        OR: keywords.map((keyword) => ({ category: { contains: keyword, mode: "insensitive" } })),
+      },
+      orderBy: { publishedAt: "desc" },
+      take: limit,
+      include: { media: { orderBy: { order: "asc" } }, _count: { select: { comments: true } } },
+    })
+  );
+}
