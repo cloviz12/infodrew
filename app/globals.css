@@ -65,6 +65,19 @@ body {
   font-size: 1.02rem;
 }
 
+/* Letra capital en el primer párrafo — que abrir una noticia se
+   sienta como abrir una página impresa, no cargar un post más. */
+.drop-cap p:first-of-type::first-letter {
+  float: left;
+  font-family: var(--font-display), sans-serif;
+  font-weight: 900;
+  font-size: 4.2rem;
+  line-height: 0.78;
+  padding-right: 0.5rem;
+  padding-top: 0.3rem;
+  color: var(--accent);
+}
+
 .tag-pill {
   display: inline-flex;
   align-items: center;
