@@ -4,6 +4,7 @@ import { isAdminLoggedIn } from "@/lib/session";
 import { getPendingPosts, getModeratedPosts, getFollowerCount } from "@/lib/data";
 import ModerationCard from "@/components/ModerationCard";
 import { formatNumber } from "@/lib/format";
+import { seedCaucaMediaPost } from "@/app/actions";
 
 export const dynamic = "force-dynamic";
 
@@ -11,10 +12,16 @@ export const metadata: Metadata = {
   title: "Moderación — Colombia Incluyente",
 };
 
-export default async function AdminPage() {
+export default async function AdminPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ seeded?: string }>;
+}) {
   if (!(await isAdminLoggedIn())) {
     redirect("/admin/login");
   }
+
+  const { seeded } = await searchParams;
 
   const [pending, moderated, followerCount] = await Promise.all([
     getPendingPosts(),
@@ -41,6 +48,26 @@ export default async function AdminPage() {
           </button>
         </form>
       </div>
+
+      <section className="mt-8 rounded-xl border border-dashed border-border p-6">
+        <h2 className="text-lg font-bold text-foreground">Fotos y video de Cauca (agosto 2026)</h2>
+        <p className="mt-1 text-sm text-muted">
+          Publica el post con las 8 fotos y los 5 videos aéreos subidos en GitHub, listo para verse en el sitio.
+        </p>
+        {seeded === "1" && (
+          <p className="mt-3 text-sm font-bold text-accent">
+            Publicado. Ya deberías verlo en el inicio y en /cauca.
+          </p>
+        )}
+        <form action={seedCaucaMediaPost} className="mt-4">
+          <button
+            type="submit"
+            className="bg-accent px-5 py-2.5 text-xs font-extrabold uppercase tracking-wide text-white transition hover:bg-accent-dark"
+          >
+            Publicar fotos y video de Cauca
+          </button>
+        </form>
+      </section>
 
       <section className="mt-8">
         <h2 className="text-lg font-bold text-foreground">Pendientes de revisión</h2>
