@@ -1,12 +1,6 @@
 import Link from "next/link";
-import { IconFacebook, IconInstagram, IconLeaf, IconX, IconYoutube } from "@/components/icons";
-
-const social = [
-  { href: "https://facebook.com", label: "Facebook", icon: IconFacebook },
-  { href: "https://instagram.com", label: "Instagram", icon: IconInstagram },
-  { href: "https://youtube.com", label: "YouTube", icon: IconYoutube },
-  { href: "https://x.com", label: "X", icon: IconX },
-];
+import { IconLeaf } from "@/components/icons";
+import { SOCIAL_LINKS } from "@/lib/social";
 
 export default function Footer() {
   return (
@@ -28,7 +22,7 @@ export default function Footer() {
             comunidades afro.
           </p>
           <div className="mt-5 flex gap-2">
-            {social.map(({ href, label, icon: Icon }) => (
+            {SOCIAL_LINKS.map(({ href, label, icon: Icon }) => (
               <a
                 key={label}
                 href={href}
@@ -66,7 +60,7 @@ export default function Footer() {
       </div>
 
       <div className="border-t border-border px-4 py-5 text-center text-xs text-muted">
-        © {new Date().getFullYear()} Colombia Incluyente — Contenido enviado por la
+        © {new Date().getFullYear()} Colombia Incluyente. Contenido enviado por la
         comunidad, revisado antes de publicarse.
       </div>
     </footer>

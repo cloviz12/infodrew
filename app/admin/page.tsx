@@ -8,7 +8,7 @@ import { formatNumber } from "@/lib/format";
 export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
-  title: "Moderación — Colombia Incluyente",
+  title: "Moderación - Colombia Incluyente",
 };
 
 export default async function AdminPage() {

@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { submitPost } from "@/app/actions";
 
 export const metadata: Metadata = {
-  title: "Envía tu noticia — Colombia Incluyente",
+  title: "Envía tu noticia - Colombia Incluyente",
   description:
     "Envía noticias, fotos y videos de tu organización o comunidad para que sean revisados y publicados en Colombia Incluyente.",
 };

@@ -5,15 +5,12 @@ import { usePathname } from "next/navigation";
 import { useState } from "react";
 import {
   IconClose,
-  IconFacebook,
-  IconInstagram,
   IconLeaf,
   IconMenu,
   IconSearch,
   IconUser,
-  IconX,
-  IconYoutube,
 } from "@/components/icons";
+import { SOCIAL_LINKS } from "@/lib/social";
 
 const links = [
   { href: "/", label: "Inicio" },
@@ -24,13 +21,6 @@ const links = [
   { href: "/contacto", label: "Contacto" },
 ];
 
-const social = [
-  { href: "https://facebook.com", label: "Facebook", icon: IconFacebook },
-  { href: "https://instagram.com", label: "Instagram", icon: IconInstagram },
-  { href: "https://youtube.com", label: "YouTube", icon: IconYoutube },
-  { href: "https://x.com", label: "X", icon: IconX },
-];
-
 export default function Header() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
@@ -39,7 +29,7 @@ export default function Header() {
     <header className="sticky top-0 z-40 border-b border-border bg-background/95 backdrop-blur">
       <div className="hidden bg-ink sm:block">
         <div className="mx-auto flex max-w-6xl justify-end gap-4 px-4 py-1.5 sm:px-6">
-          {social.map(({ href, label, icon: Icon }) => (
+          {SOCIAL_LINKS.map(({ href, label, icon: Icon }) => (
             <a
               key={label}
               href={href}
