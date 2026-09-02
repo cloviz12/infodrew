@@ -13,127 +13,45 @@ function slugify(input) {
     .replace(/-+/g, "-");
 }
 
+// Títulos de los artículos de ejemplo / de prueba que existieron antes de
+// tener contenido real. Se eliminan explícitamente (no solo se dejan de
+// sembrar) para que un `db:seed` sobre una base ya poblada también los borre.
+const RETIRED_TITLES = [
+  "Líderes nacionales y regionales se reúnen para dialogar sobre paz territorial",
+  "Congreso debate nueva ley de participación ciudadana",
+  "Comunidades campesinas del norte del Cauca fortalecen sus procesos organizativos",
+  "Mujeres del Cauca lideran proyecto de huertas comunitarias",
+  "Consejos comunitarios afro del Cauca avanzan en su plan de vida",
+  "[PRUEBA] Recorrido por el territorio del Cauca",
+];
+
 const posts = [
   {
-    title: "Líderes nacionales y regionales se reúnen para dialogar sobre paz territorial",
+    title: "URT logra en Chocó su primer fallo judicial de reparación integral de tierras",
     excerpt:
-      "Representantes del gobierno nacional y de gobernaciones regionales se sentaron a dialogar sobre los avances en la implementación de los acuerdos de paz en distintos territorios del país.",
+      "El Juzgado Primero Civil del Circuito Especializado en Restitución de Tierras de Quibdó ordenó restituir el predio \"El Cairo – Parcela 20\", en El Carmen de Atrato, a una familia víctima de desplazamiento forzado.",
     content:
-      "Durante el encuentro, líderes nacionales y regionales presentaron un balance de los compromisos adquiridos en materia de paz territorial.\nLas organizaciones sociales presentes destacaron la importancia de mantener espacios de diálogo permanentes entre el Estado y las comunidades.\nSe acordó una nueva mesa de seguimiento con participación de la sociedad civil.",
+      "La Dirección Territorial Chocó de la Unidad de Restitución de Tierras (URT) logra su primer fallo judicial de reparación integral en el departamento.\nA través de la Sentencia No. 042 de 2026, el Juzgado Primero Civil del Circuito Especializado en Restitución de Tierras de Quibdó ordenó la restitución y formalización del predio \"El Cairo – Parcela 20\", ubicado en la vereda La Argelia del municipio de El Carmen de Atrato, a favor de una familia víctima de desplazamiento forzado.\nEsta decisión judicial reconoce los derechos de la familia afectada por el conflicto armado y ordena medidas de reparación integral y reconstrucción del tejido social en una zona impactada por el abandono forzado de tierras.\nLa URT, a través de la Dirección Territorial Chocó, obtuvo este hito institucional que fortalece el acceso a la justicia para las víctimas en el departamento. Durante el proceso se acreditó que el abandono del predio fue consecuencia directa de la violencia generada.",
     section: "COLOMBIA",
-    category: "Política",
-    authorName: "Equipo Editorial Colombia Incluyente",
-    authorOrg: "Colombia Incluyente",
-    coverImage: "https://images.unsplash.com/photo-1573164713988-8665fc963095?w=1200&q=80",
+    category: "Restitución de tierras",
+    authorName: "Unidad de Restitución de Tierras (URT)",
+    authorOrg: "URT — Dirección Territorial Chocó",
+    coverImage: null,
     isOfficial: true,
-  },
-  {
-    title: "Congreso debate nueva ley de participación ciudadana",
-    excerpt:
-      "El proyecto busca fortalecer los mecanismos de participación de organizaciones sociales y comunidades en la toma de decisiones públicas.",
-    content:
-      "La iniciativa contempla la creación de consejos consultivos regionales con participación directa de comunidades campesinas, mujeres y comunidades afro.\nOrganizaciones de la sociedad civil celebraron el avance, aunque piden garantías de financiación para su implementación real en los territorios.",
-    section: "COLOMBIA",
-    category: "Institucional",
-    authorName: "Equipo Editorial Colombia Incluyente",
-    authorOrg: "Colombia Incluyente",
-    coverImage: "https://images.unsplash.com/photo-1541872703-74c5e44368f9?w=1200&q=80",
-    isOfficial: true,
-  },
-  {
-    title: "Comunidades campesinas del norte del Cauca fortalecen sus procesos organizativos",
-    excerpt:
-      "Asociaciones campesinas se reunieron en un encuentro regional para compartir experiencias productivas y de defensa del territorio.",
-    content:
-      "El encuentro reunió a más de 20 organizaciones campesinas del norte del Cauca.\nSe compartieron experiencias sobre economía solidaria, seguridad alimentaria y defensa del territorio frente a proyectos extractivos.\nLas comunidades anunciaron una agenda conjunta de trabajo para el próximo año.",
-    section: "CAUCA",
-    category: "Comunidades campesinas",
-    authorName: "Asociación Campesina del Norte del Cauca",
-    authorOrg: "Asociación Campesina del Norte del Cauca",
-    coverImage: "https://images.unsplash.com/photo-1500595046743-cd271d694d30?w=1200&q=80",
-    isOfficial: true,
-  },
-  {
-    title: "Mujeres del Cauca lideran proyecto de huertas comunitarias",
-    excerpt:
-      "Un colectivo de mujeres de distintos municipios del Cauca impulsa huertas agroecológicas como estrategia de soberanía alimentaria.",
-    content:
-      "El proyecto beneficia a más de 15 familias en sus primeras fases.\nLas lideresas destacan que la iniciativa también busca generar espacios de encuentro y formación en liderazgo para las mujeres del territorio.",
-    section: "CAUCA",
-    category: "Mujeres",
-    authorName: "Colectivo de Mujeres Tejedoras del Cauca",
-    authorOrg: "Colectivo de Mujeres Tejedoras del Cauca",
-    coverImage: "https://images.unsplash.com/photo-1466692476868-aef1dfb1e735?w=1200&q=80",
-    isOfficial: true,
-  },
-  {
-    title: "Consejos comunitarios afro del Cauca avanzan en su plan de vida",
-    excerpt:
-      "Consejos comunitarios de comunidades afrodescendientes presentaron los avances de su plan de vida territorial en un encuentro regional.",
-    content:
-      "El plan de vida incluye estrategias de fortalecimiento cultural, productivo y ambiental para las comunidades afro del Cauca.\nLos consejos comunitarios invitaron a otras organizaciones del territorio a sumarse a las próximas jornadas de trabajo.",
-    section: "CAUCA",
-    category: "Comunidades afro",
-    authorName: "Consejo Comunitario Afro del Cauca",
-    authorOrg: "Consejo Comunitario Afro del Cauca",
-    coverImage: "https://images.unsplash.com/photo-1521791136064-7986c2920216?w=1200&q=80",
-    isOfficial: true,
-  },
-  {
-    // Post de PRUEBA para validar el flujo de fotos + video subidos en el
-    // PR #11 (public/media/cauca-2026-08 y el release media-cauca-2026-08).
-    // Título/texto son placeholder a propósito, sin afirmaciones de hechos
-    // reales: reemplazar por la redacción real antes de usarlo en producción.
-    title: "[PRUEBA] Recorrido por el territorio del Cauca",
-    excerpt:
-      "Contenido de prueba para validar fotos y video en el sitio. Pendiente de redacción real.",
-    content:
-      "Este artículo es un marcador de posición (placeholder) creado para probar que las fotos y videos subidos se ven correctamente en el sitio. No describe un hecho real y debe reemplazarse por contenido editorial verificado antes de publicarse.",
-    section: "CAUCA",
-    category: "Territorio",
-    authorName: "Equipo Editorial Colombia Incluyente (prueba)",
-    authorOrg: null,
-    coverImage: "/media/cauca-2026-08/53706333279_e37fea4fc2_k.jpg",
-    isOfficial: false,
-    media: [
-      { type: "IMAGE", url: "/media/cauca-2026-08/54135067373_e1a33daa01_k.jpg", order: 0 },
-      { type: "IMAGE", url: "/media/cauca-2026-08/54135119049_b33738fa7d_k.jpg", order: 1 },
-      { type: "IMAGE", url: "/media/cauca-2026-08/54135272664_cd35293fd4_k.jpg", order: 2 },
-      { type: "IMAGE", url: "/media/cauca-2026-08/54470254527_1f65311414_h.jpg", order: 3 },
-      { type: "IMAGE", url: "/media/cauca-2026-08/54471093276_58226e487e_h.jpg", order: 4 },
-      { type: "IMAGE", url: "/media/cauca-2026-08/54471093406_3fc6472920_b.jpg", order: 5 },
-      { type: "IMAGE", url: "/media/cauca-2026-08/54471453975_01f8f1ce74_h.jpg", order: 6 },
-      {
-        type: "VIDEO",
-        url: "https://github.com/cloviz12/infodrew/releases/download/media-cauca-2026-08/DJI_0008.MP4",
-        order: 7,
-      },
-      {
-        type: "VIDEO",
-        url: "https://github.com/cloviz12/infodrew/releases/download/media-cauca-2026-08/DJI_0009.MP4",
-        order: 8,
-      },
-      {
-        type: "VIDEO",
-        url: "https://github.com/cloviz12/infodrew/releases/download/media-cauca-2026-08/DJI_0012.MP4",
-        order: 9,
-      },
-      {
-        type: "VIDEO",
-        url: "https://github.com/cloviz12/infodrew/releases/download/media-cauca-2026-08/DJI_0021.MP4",
-        order: 10,
-      },
-      {
-        type: "VIDEO",
-        url: "https://github.com/cloviz12/infodrew/releases/download/media-cauca-2026-08/DJI_0025.MP4",
-        order: 11,
-      },
-    ],
+    publishedAt: new Date("2026-07-16T12:00:00-05:00"),
   },
 ];
 
 async function main() {
-  for (const { media, ...post } of posts) {
+  const retiredSlugs = RETIRED_TITLES.map(slugify);
+  const { count: removed } = await prisma.post.deleteMany({
+    where: { slug: { in: retiredSlugs } },
+  });
+  if (removed > 0) {
+    console.log(`Eliminados ${removed} artículo(s) de ejemplo/prueba.`);
+  }
+
+  for (const { media, publishedAt, ...post } of posts) {
     const slug = slugify(post.title);
     await prisma.post.upsert({
       where: { slug },
@@ -142,13 +60,13 @@ async function main() {
         ...post,
         slug,
         status: "PUBLISHED",
-        publishedAt: new Date(),
+        publishedAt: publishedAt ?? new Date(),
         ...(media ? { media: { create: media } } : {}),
       },
     });
   }
 
-  console.log(`Sembrados ${posts.length} artículos de ejemplo.`);
+  console.log(`Sembrados ${posts.length} artículo(s) real(es).`);
 }
 
 main()
