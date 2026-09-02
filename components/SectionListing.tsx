@@ -2,6 +2,7 @@ import type { Section } from "@prisma/client";
 import PostFeature from "@/components/PostFeature";
 import PostRow from "@/components/PostRow";
 import ArtCover from "@/components/ArtCover";
+import RevealOnScroll from "@/components/RevealOnScroll";
 import { getPublishedPosts } from "@/lib/data";
 import { ART } from "@/lib/art";
 
@@ -55,7 +56,9 @@ export default async function SectionListing({ section }: { section: Section }) 
             {posts.length > 1 && (
               <div className="mt-2">
                 {posts.slice(1).map((post, i) => (
-                  <PostRow key={post.id} post={post} index={i + 1} />
+                  <RevealOnScroll key={post.id} delay={Math.min(i, 6) * 60}>
+                    <PostRow post={post} index={i + 1} isFirst={i === 0} />
+                  </RevealOnScroll>
                 ))}
               </div>
             )}

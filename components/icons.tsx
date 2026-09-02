@@ -148,3 +148,14 @@ export const IconYoutube = base(
 );
 
 export const IconX = base(<path d="M4 4l16 16M20 4 4 20" />);
+
+export const IconSun = base(
+  <>
+    <circle cx="12" cy="12" r="4.2" />
+    <path d="M12 2.5v2.4M12 19.1v2.4M4.6 4.6l1.7 1.7M17.7 17.7l1.7 1.7M2.5 12h2.4M19.1 12h2.4M4.6 19.4l1.7-1.7M17.7 6.3l1.7-1.7" />
+  </>
+);
+
+export const IconMoon = base(
+  <path d="M20 14.3A8.5 8.5 0 1 1 9.7 4a6.8 6.8 0 0 0 10.3 10.3Z" />
+);

@@ -4,7 +4,7 @@ import SectionListing from "@/components/SectionListing";
 export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
-  title: "Cauca — Colombia Incluyente",
+  title: "Cauca - Colombia Incluyente",
   description:
     "Organizaciones sociales, comunidades campesinas, mujeres y comunidades afro del territorio caucano.",
 };

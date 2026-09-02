@@ -11,13 +11,23 @@ type PostWithExtras = Post & {
 // Fila de índice: número + miniatura chica + titular, como el sumario
 // de un medio, no una tarjeta repetida. Separadas por una línea fina,
 // sin bordes ni sombras alrededor de cada una.
-export default function PostRow({ post, index }: { post: PostWithExtras; index: number }) {
+export default function PostRow({
+  post,
+  index,
+  isFirst = index === 0,
+}: {
+  post: PostWithExtras;
+  index: number;
+  isFirst?: boolean;
+}) {
   const image = post.coverImage ?? post.media.find((m) => m.type === "IMAGE")?.url;
 
   return (
     <Link
       href={`/noticia/${post.slug}`}
-      className="group flex items-start gap-4 rounded-xl border-t border-border px-2 py-5 transition first:border-t-0 hover:bg-surface-muted"
+      className={`group flex items-start gap-4 rounded-xl px-2 py-5 transition hover:bg-surface-muted ${
+        isFirst ? "" : "border-t border-border"
+      }`}
     >
       <span className="w-7 shrink-0 font-display text-lg font-black leading-none text-muted/60">
         {String(index + 1).padStart(2, "0")}

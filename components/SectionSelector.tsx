@@ -5,14 +5,14 @@ const items = [
   {
     href: "/colombia",
     label: "Colombia",
-    color: "var(--colombia)",
+    color: "var(--colombia-dark)",
     bg: "var(--colombia-light)",
     desc: "Noticias y acontecimientos que impactan al país.",
   },
   {
     href: "/cauca",
     label: "Cauca",
-    color: "var(--cauca)",
+    color: "var(--cauca-dark)",
     bg: "var(--cauca-light)",
     desc: "Historias y procesos que transforman nuestro territorio.",
   },

@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { submitPost } from "@/app/actions";
 
 export const metadata: Metadata = {
-  title: "Envía tu noticia — Colombia Incluyente",
+  title: "Envía tu noticia - Colombia Incluyente",
   description:
     "Envía noticias, fotos y videos de tu organización o comunidad para que sean revisados y publicados en Colombia Incluyente.",
 };
@@ -145,7 +145,7 @@ export default async function EnviarPage({
 
         <button
           type="submit"
-          className="mt-2 rounded-full bg-accent px-6 py-3.5 text-sm font-bold text-white transition hover:bg-accent-dark"
+          className="mt-2 rounded-full bg-accent px-6 py-3.5 text-sm font-bold text-accent-foreground transition hover:bg-accent-dark"
         >
           Enviar para revisión
         </button>

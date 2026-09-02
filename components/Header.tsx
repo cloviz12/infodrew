@@ -5,15 +5,13 @@ import { usePathname } from "next/navigation";
 import { useState } from "react";
 import {
   IconClose,
-  IconFacebook,
-  IconInstagram,
   IconLeaf,
   IconMenu,
   IconSearch,
   IconUser,
-  IconX,
-  IconYoutube,
 } from "@/components/icons";
+import { SOCIAL_LINKS } from "@/lib/social";
+import ThemeToggle from "@/components/ThemeToggle";
 
 const links = [
   { href: "/", label: "Inicio" },
@@ -24,13 +22,6 @@ const links = [
   { href: "/contacto", label: "Contacto" },
 ];
 
-const social = [
-  { href: "https://facebook.com", label: "Facebook", icon: IconFacebook },
-  { href: "https://instagram.com", label: "Instagram", icon: IconInstagram },
-  { href: "https://youtube.com", label: "YouTube", icon: IconYoutube },
-  { href: "https://x.com", label: "X", icon: IconX },
-];
-
 export default function Header() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
@@ -39,7 +30,7 @@ export default function Header() {
     <header className="sticky top-0 z-40 border-b border-border bg-background/95 backdrop-blur">
       <div className="hidden bg-ink sm:block">
         <div className="mx-auto flex max-w-6xl justify-end gap-4 px-4 py-1.5 sm:px-6">
-          {social.map(({ href, label, icon: Icon }) => (
+          {SOCIAL_LINKS.map(({ href, label, icon: Icon }) => (
             <a
               key={label}
               href={href}
@@ -56,7 +47,7 @@ export default function Header() {
 
       <div className="mx-auto flex max-w-6xl items-center justify-between gap-6 px-4 py-3 sm:px-6">
         <Link href="/" className="flex items-center gap-3">
-          <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-accent text-white">
+          <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-accent text-accent-foreground">
             <IconLeaf className="h-5 w-5" />
           </span>
           <span className="leading-tight">
@@ -96,9 +87,10 @@ export default function Header() {
           >
             <IconSearch className="h-5 w-5" />
           </button>
+          <ThemeToggle />
           <Link
             href="/admin/login"
-            className="hidden items-center gap-2 rounded-full bg-accent px-4 py-2.5 text-[13px] font-bold text-white transition hover:bg-accent-dark sm:inline-flex"
+            className="hidden items-center gap-2 rounded-full bg-accent px-4 py-2.5 text-[13px] font-bold text-accent-foreground transition hover:bg-accent-dark sm:inline-flex"
           >
             <IconUser className="h-4 w-4" />
             Iniciar sesión
@@ -129,7 +121,7 @@ export default function Header() {
           <Link
             href="/admin/login"
             onClick={() => setOpen(false)}
-            className="mt-1 inline-flex items-center gap-2 rounded-full bg-accent px-4 py-2.5 text-sm font-bold text-white"
+            className="mt-1 inline-flex items-center gap-2 rounded-full bg-accent px-4 py-2.5 text-sm font-bold text-accent-foreground"
           >
             <IconUser className="h-4 w-4" />
             Iniciar sesión

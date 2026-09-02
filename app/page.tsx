@@ -5,6 +5,7 @@ import HeroVideoButton from "@/components/HeroVideoButton";
 import SectionSelector from "@/components/SectionSelector";
 import NewsCard from "@/components/NewsCard";
 import SendNewsCard from "@/components/SendNewsCard";
+import RevealOnScroll from "@/components/RevealOnScroll";
 import TopicsGrid from "@/components/TopicsGrid";
 import FeaturedVideo from "@/components/FeaturedVideo";
 import MostCommented from "@/components/MostCommented";
@@ -62,7 +63,7 @@ export default async function HomePage({
               <div className="reveal-up delay-3 mt-7 flex flex-wrap gap-3">
                 <Link
                   href="/colombia"
-                  className="bg-accent px-5 py-2.5 text-xs font-extrabold uppercase tracking-wide text-white transition hover:bg-accent-dark"
+                  className="bg-accent px-5 py-2.5 text-xs font-extrabold uppercase tracking-wide text-accent-foreground transition hover:bg-accent-dark"
                 >
                   Explorar Colombia
                 </Link>
@@ -113,10 +114,14 @@ export default async function HomePage({
             </p>
           ) : (
             <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
-              {latestPosts.map((post) => (
-                <NewsCard key={post.id} post={post} />
+              {latestPosts.map((post, i) => (
+                <RevealOnScroll key={post.id} delay={i * 80}>
+                  <NewsCard post={post} />
+                </RevealOnScroll>
               ))}
-              <SendNewsCard />
+              <RevealOnScroll delay={latestPosts.length * 80}>
+                <SendNewsCard />
+              </RevealOnScroll>
             </div>
           )}
         </section>

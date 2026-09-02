@@ -29,9 +29,9 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { slug } = await params;
   const post = await loadPost(slug);
-  if (!post) return { title: "Noticia no encontrada — Colombia Incluyente" };
+  if (!post) return { title: "Noticia no encontrada - Colombia Incluyente" };
   return {
-    title: `${post.title} — Colombia Incluyente`,
+    title: `${post.title} - Colombia Incluyente`,
     description: post.excerpt,
   };
 }

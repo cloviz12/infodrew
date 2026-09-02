@@ -6,6 +6,8 @@
      bloques planos con bordes duros ni tipografía en mayúscula
      sostenida — la referencia es un medio comunitario contemporáneo,
      cercano y legible, no un cartel. */
+  color-scheme: light dark;
+
   --background: #f7f6f0;
   --surface: #ffffff;
   --surface-muted: #f1f0e8;
@@ -19,6 +21,7 @@
   --accent: #1f6d45;
   --accent-dark: #14432d;
   --accent-light: #e3f0e7;
+  --accent-foreground: #ffffff;
 
   --colombia: #1c5a7c;
   --colombia-dark: #123f57;
@@ -36,6 +39,39 @@
   --colombia-red: #b3261e;
 }
 
+/* Modo oscuro: mismos roles semánticos, no una simple inversión.
+   --ink/--ink-soft no cambian (siempre fueron el tono más oscuro de la
+   paleta, ya usados en el héroe). El acento y los colores de sección se
+   reformulan para dos roles distintos que en claro coincidían por
+   casualidad en un mismo valor y en oscuro ya no pueden: --accent y
+   --*-dark se aclaran para servir como texto/borde legible sobre fondo
+   oscuro (min. 4.5:1 verificado), y --accent-foreground pasa a un tinta
+   casi negra porque un verde brillante con texto blanco encima no pasa
+   contraste AA. Los --*-light pasan de tinte pastel a tinte oscuro para
+   que las píldoras de fondo sigan leyéndose como "la misma familia de
+   color", nunca una tarjeta clara flotando en una página oscura. */
+:root[data-theme="dark"] {
+  --background: #14181a;
+  --surface: #1c2320;
+  --surface-muted: #232b27;
+  --foreground: #f2f0e6;
+  --muted: #9aa39a;
+  --border: #2e3630;
+
+  --accent: #34a373;
+  --accent-dark: #55cf9b;
+  --accent-light: #17251c;
+  --accent-foreground: #0d1310;
+
+  --colombia-dark: #5aa9d6;
+  --colombia-light: #15222b;
+
+  --cauca-dark: #6fc274;
+  --cauca-light: #16231a;
+
+  --colombia-red: #ef5b4e;
+}
+
 @theme inline {
   --color-background: var(--background);
   --color-surface: var(--surface);
@@ -50,6 +86,7 @@
   --color-accent: var(--accent);
   --color-accent-dark: var(--accent-dark);
   --color-accent-light: var(--accent-light);
+  --color-accent-foreground: var(--accent-foreground);
 
   --color-colombia: var(--colombia);
   --color-colombia-dark: var(--colombia-dark);
@@ -62,6 +99,10 @@
 
   --font-sans: var(--font-archivo);
   --font-display: var(--font-archivo);
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
 }
 
 body {

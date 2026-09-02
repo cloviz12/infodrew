@@ -14,8 +14,8 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { slug } = await params;
   const topic = getTopicBySlug(slug);
-  if (!topic) return { title: "Tema no encontrado — Colombia Incluyente" };
-  return { title: `${topic.label} — Colombia Incluyente` };
+  if (!topic) return { title: "Tema no encontrado - Colombia Incluyente" };
+  return { title: `${topic.label} - Colombia Incluyente` };
 }
 
 export default async function TopicPage({
