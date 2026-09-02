@@ -40,6 +40,33 @@ const posts = [
     isOfficial: true,
     publishedAt: new Date("2026-07-16T12:00:00-05:00"),
   },
+  {
+    title: "URT entrega 100 compensaciones por equivalencia a víctimas de despojo en el Meta",
+    excerpt:
+      "La Dirección Territorial Meta de la URT completó 100 compensaciones por equivalencia, una inversión cercana a $18.000 millones, en cumplimiento de sentencias de restitución de tierras.",
+    content:
+      "La Unidad de Restitución de Tierras (URT), a través de su Dirección Territorial Meta, ha entregado 100 compensaciones por equivalencia, que representan una inversión cercana a $18.000 millones, en cumplimiento de las sentencias proferidas por jueces y magistrados especializados, beneficiando a víctimas de despojo y abandono forzado en el departamento.\nDe ese total, 82 compensaciones, por un valor aproximado de $11.400 millones, fueron entregadas desde la entrada en vigencia de la Ley 1448 de 2011 hasta el inicio del actual Gobierno. En la administración del presidente Gustavo Petro, la Dirección Territorial Meta ha materializado 18 compensaciones, con una inversión cercana a $6.600 millones, equivalente a cerca del 37% de los recursos ejecutados para esta medida de reparación en la región.\nLa compensación por equivalencia es una medida contemplada en la Ley 1448 de 2011 o Ley de Víctimas y Restitución de Tierras, que busca garantizar la reparación integral.",
+    section: "COLOMBIA",
+    category: "Restitución de tierras",
+    authorName: "Unidad de Restitución de Tierras (URT)",
+    authorOrg: "URT — Dirección Territorial Meta",
+    coverImage: null,
+    isOfficial: true,
+  },
+  {
+    title: "URT restituye 22.620 hectáreas al Resguardo Indígena Río Guangüí en Timbiquí, Cauca",
+    excerpt:
+      "En cumplimiento de la Sentencia 080, la URT hizo entrega simbólica del fallo que devuelve 22.620 hectáreas y 6.901 m² al pueblo Eperara Siapidara en zona rural de Timbiquí.",
+    content:
+      "Timbiquí, 10 de julio de 2026 (@URestitucion). En cumplimiento de la Sentencia 080, proferida por el Juzgado Segundo Civil del Circuito Especializado en Restitución de Tierras de Popayán, la URT llegó hasta la zona rural de Timbiquí, en el departamento del Cauca, para realizar la entrega simbólica del fallo que devuelve 22.620 hectáreas y 6.901 metros cuadrados al Resguardo Indígena Río Guangüí.\nLa entrega simbólica de la sentencia se realizó en zona rural de Timbiquí, a tres horas de la cabecera municipal, donde la Dirección de Asuntos Étnicos de la Unidad de Restitución de Tierras (URT) materializó los derechos territoriales de familias pertenecientes al pueblo originario Eperara Siapidara, afectados por el conflicto armado.\nLa decisión judicial es el resultado del proceso de acompañamiento adelantado por la Unidad de Restitución de Tierras, durante el cual se identificaron y caracterizaron los hechos que evidencian un prolongado proceso de vulneración de los derechos colectivos de esta comunidad indígena.",
+    section: "CAUCA",
+    category: "Pueblos indígenas",
+    authorName: "Unidad de Restitución de Tierras (URT)",
+    authorOrg: "URT — Dirección de Asuntos Étnicos",
+    coverImage: null,
+    isOfficial: true,
+    publishedAt: new Date("2026-07-10T12:00:00-05:00"),
+  },
 ];
 
 async function main() {
