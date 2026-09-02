@@ -23,6 +23,7 @@ const RETIRED_TITLES = [
   "Mujeres del Cauca lideran proyecto de huertas comunitarias",
   "Consejos comunitarios afro del Cauca avanzan en su plan de vida",
   "[PRUEBA] Recorrido por el territorio del Cauca",
+  "Recorrido aéreo por el territorio del Cauca",
 ];
 
 const posts = [
