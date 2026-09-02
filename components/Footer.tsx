@@ -8,7 +8,7 @@ export default function Footer() {
       <div className="mx-auto grid max-w-6xl gap-10 px-4 py-14 sm:px-6 sm:grid-cols-[1.3fr_1fr_1fr]">
         <div>
           <Link href="/" className="flex items-center gap-2.5">
-            <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-accent text-white">
+            <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-accent text-accent-foreground">
               <IconLeaf className="h-4 w-4" />
             </span>
             <span className="font-display text-lg font-black uppercase leading-none tracking-tight text-foreground">
@@ -29,7 +29,7 @@ export default function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={label}
-                className="flex h-9 w-9 items-center justify-center rounded-full bg-surface-muted text-foreground/70 transition hover:bg-accent hover:text-white"
+                className="flex h-9 w-9 items-center justify-center rounded-full bg-surface-muted text-foreground/70 transition hover:bg-accent hover:text-accent-foreground"
               >
                 <Icon className="h-4 w-4" />
               </a>

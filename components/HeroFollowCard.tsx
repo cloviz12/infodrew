@@ -27,7 +27,7 @@ export default function HeroFollowCard({ followerCount }: { followerCount: numbe
       </div>
       <Link
         href="/#seguir"
-        className="mt-5 flex w-full items-center justify-center rounded-full bg-accent px-4 py-2.5 text-sm font-bold text-white transition hover:bg-accent-dark"
+        className="mt-5 flex w-full items-center justify-center rounded-full bg-accent px-4 py-2.5 text-sm font-bold text-accent-foreground transition hover:bg-accent-dark"
       >
         Seguir
       </Link>

@@ -15,7 +15,7 @@ export default function SendNewsCard() {
       </p>
       <Link
         href="/enviar"
-        className="mt-1 inline-flex items-center gap-2 rounded-full bg-accent px-4 py-2.5 text-sm font-bold text-white transition hover:bg-accent-dark"
+        className="mt-1 inline-flex items-center gap-2 rounded-full bg-accent px-4 py-2.5 text-sm font-bold text-accent-foreground transition hover:bg-accent-dark"
       >
         <IconSend className="h-4 w-4" />
         Enviar mi contenido

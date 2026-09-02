@@ -93,7 +93,7 @@ export default function QuienesSomosPage() {
         </div>
         <Link
           href="/enviar"
-          className="inline-flex h-fit items-center gap-2 self-center rounded-full bg-accent px-5 py-2.5 text-sm font-bold text-white transition hover:bg-accent-dark"
+          className="inline-flex h-fit items-center gap-2 self-center rounded-full bg-accent px-5 py-2.5 text-sm font-bold text-accent-foreground transition hover:bg-accent-dark"
         >
           <IconPencil className="h-4 w-4" />
           Enviar mi contenido

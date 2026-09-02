@@ -63,7 +63,7 @@ export default async function HomePage({
               <div className="reveal-up delay-3 mt-7 flex flex-wrap gap-3">
                 <Link
                   href="/colombia"
-                  className="bg-accent px-5 py-2.5 text-xs font-extrabold uppercase tracking-wide text-white transition hover:bg-accent-dark"
+                  className="bg-accent px-5 py-2.5 text-xs font-extrabold uppercase tracking-wide text-accent-foreground transition hover:bg-accent-dark"
                 >
                   Explorar Colombia
                 </Link>

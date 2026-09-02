@@ -37,7 +37,7 @@ export default function ContactoPage() {
           </div>
           <Link
             href="/enviar"
-            className="inline-flex items-center gap-2 rounded-full bg-accent px-5 py-2.5 text-sm font-bold text-white transition hover:bg-accent-dark"
+            className="inline-flex items-center gap-2 rounded-full bg-accent px-5 py-2.5 text-sm font-bold text-accent-foreground transition hover:bg-accent-dark"
           >
             Ir al formulario
           </Link>
@@ -80,7 +80,7 @@ export default function ContactoPage() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={label}
-                className="flex h-10 w-10 items-center justify-center rounded-full bg-surface-muted text-foreground/70 transition hover:bg-accent hover:text-white"
+                className="flex h-10 w-10 items-center justify-center rounded-full bg-surface-muted text-foreground/70 transition hover:bg-accent hover:text-accent-foreground"
               >
                 <Icon className="h-4 w-4" />
               </a>
