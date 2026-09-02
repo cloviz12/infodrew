@@ -67,6 +67,26 @@ const posts = [
     isOfficial: true,
     publishedAt: new Date("2026-07-10T12:00:00-05:00"),
   },
+  {
+    // Post "carrier" solo para que el video de portada quede disponible
+    // como Media tipo VIDEO: getFeaturedVideoPost() toma el post
+    // PUBLISHED más reciente que tenga un video, y ese post alimenta el
+    // fondo animado del hero y "Videos destacados" en el home. La fecha
+    // se fija en el pasado a propósito para que este post no le quite
+    // su lugar a las noticias reales en "Noticias destacadas" (que se
+    // ordenan por publishedAt sin importar si tienen video).
+    title: "Video de portada",
+    excerpt: "Video de portada del sitio.",
+    content: "Video de portada del sitio.",
+    section: "COLOMBIA",
+    category: "Portada",
+    authorName: "Equipo Editorial Colombia Incluyente",
+    authorOrg: "Colombia Incluyente",
+    coverImage: null,
+    isOfficial: true,
+    publishedAt: new Date("2026-01-01T00:00:00-05:00"),
+    media: [{ type: "VIDEO", url: "/media/portada/portada-3.mp4", order: 0 }],
+  },
 ];
 
 async function main() {
