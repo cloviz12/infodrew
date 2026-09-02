@@ -148,3 +148,4 @@ export async function moderatePost(postId: string, action: "approve" | "reject")
   revalidatePath("/cauca");
   revalidatePath(`/noticia/${post.slug}`);
 }
+
