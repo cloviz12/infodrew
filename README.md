@@ -33,7 +33,7 @@ principales:
 npm install
 cp .env.example .env   # define DATABASE_URL con tu Postgres
 npx prisma migrate deploy
-npm run db:seed        # opcional: carga noticias de ejemplo
+npm run db:seed        # opcional: carga las noticias reales y borra las de ejemplo/prueba
 npm run dev
 ```
 
@@ -68,5 +68,5 @@ contraseña que quieras usar para entrar a `/admin`.
 - `npm run build` — build de producción
 - `npm run start` — servidor de producción
 - `npm run lint` — linting
-- `npm run db:seed` — carga noticias de ejemplo
+- `npm run db:seed` — carga las noticias reales y borra las de ejemplo/prueba
 - `npm run db:migrate` — crea/aplica migraciones de Prisma en desarrollo
